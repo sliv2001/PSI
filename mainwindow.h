@@ -25,6 +25,8 @@ public:
 private slots:
     void on_tabWidget_objectNameChanged(const QString &objectName);
 
+    void on_tabWidget_currentChanged(int index);
+
 private:
 
 };

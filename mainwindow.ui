@@ -33,7 +33,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -93,6 +93,7 @@
     <property name="title">
      <string>Экспорт</string>
     </property>
+    <addaction name="action_3"/>
    </widget>
    <widget class="QMenu" name="menu_3">
     <property name="title">
@@ -118,6 +119,11 @@
   <action name="action_2">
    <property name="text">
     <string>Получить медиа из папки</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>Выбрать папку</string>
    </property>
   </action>
  </widget>
