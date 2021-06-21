@@ -33,7 +33,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>-1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -50,21 +50,6 @@
           <property name="tabBarAutoHide">
            <bool>true</bool>
           </property>
-          <widget class="QWidget" name="tab">
-           <attribute name="title">
-            <string>2021</string>
-           </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_3">
-            <item>
-             <widget class="QTableWidget" name="tableWidget"/>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tab_2">
-           <attribute name="title">
-            <string>2020</string>
-           </attribute>
-          </widget>
          </widget>
         </item>
        </layout>

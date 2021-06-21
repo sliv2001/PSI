@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include <QTableWidget>
+#include <QFileDialog>
+#include <QFileSystemModel>
+#include <exiv2/exiv2.hpp>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,12 +23,17 @@ public:
      * Эта функция создаёт на index-том табе табвью с этим номером года
     */
     void setupTabView(int index, int year);
+    QFileSystemModel* getFilesToModel(QString dir);
+    int getYear(QString photoPath);
+
     Ui::MainWindow *ui;
 
 private slots:
     void on_tabWidget_objectNameChanged(const QString &objectName);
 
     void on_tabWidget_currentChanged(int index);
+
+    void on_action_2_triggered();
 
 private:
 

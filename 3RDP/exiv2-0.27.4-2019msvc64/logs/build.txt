@@ -1,0 +1,1082 @@
+ log for 2021-06-15_14:58:00                                                                    
+uname_result(system='Windows', node='rmillsmm-w10', release='10', version='10.0.18362', machine='AMD64')
+ALLUSERSPROFILE=C:\ProgramData
+APPDATA=C:\Users\rmills\AppData\Roaming
+APR_ICONV1_PATH=C:\Program Files (x86)\WANdisco\Subversion\Apache2\bin\iconv
+APR_ICONV_PATH=C:\Users\rmills\com\Subversion\iconv
+BitviseSfsDll=00000A74-9BFD46D2-B201C58A-02ECB270
+BVSSHSERVERINSTANCE=Bitvise SSH Server
+CLASSPATH=c:\Users\rmills\gnu\SH3D\ToWebPlugin\ST-4.0.8.jar;c:\Users\rmills\gnu\SH3D\ToWebPlugin\json-simple-1.1.1.jar
+CommonProgramFiles=C:\Program Files\Common Files
+CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+CommonProgramW6432=C:\Program Files\Common Files
+COMPUTERNAME=RMILLSMM-W10
+ComSpec=C:\WINDOWS\system32\cmd.exe
+CYGWIN=nodosfilewarning
+DriverData=C:\Windows\System32\Drivers\DriverData
+EXIV2_EXT=.exe
+FP_NO_HOST_CHECK=NO
+HOME=C:\Users\rmills
+HOMEDRIVE=C:
+HOMEPATH=\Users\rmills
+JAVA_HOME=C:\Program Files\Java\jdk-11\bin
+LANG=en_GB.UTF-8
+LOCALAPPDATA=C:\Users\rmills\AppData\Local
+LOGONSERVER=\\RMILLSMM-W10
+NUMBER_OF_PROCESSORS=2
+OneDrive=C:\Users\rmills\OneDrive
+OS=Windows_NT
+P=C:\Python39\;C:\Python39\Scripts;C:\Users\rmills\AppData\Roaming\Python\Python39;c:\Program Files\cmake\bin;c:\msys64\usr\bin;C:\Users\rmills\AppData\Local\Programs\Microsoft VS Code;c:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin;c:\Windows\System32;C:\Users\rmills\com;
+Path=C:\Python39\;C:\Python39\Scripts;C:\Users\rmills\AppData\Roaming\Python\Python39;c:\Program Files\cmake\bin;c:\msys64\usr\bin;C:\Users\rmills\AppData\Local\Programs\Microsoft VS Code;c:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin;c:\Windows\System32;C:\Users\rmills\com;
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.pl
+PROCESSOR_ARCHITECTURE=AMD64
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+PROCESSOR_LEVEL=6
+PROCESSOR_REVISION=3a09
+ProgramData=C:\ProgramData
+ProgramFiles=C:\Program Files
+ProgramFiles(x86)=C:\Program Files (x86)
+ProgramW6432=C:\Program Files
+PROMPT=$P$G
+PSModulePath=C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules\
+PUBLIC=C:\Users\Public
+SSH_CLIENT=192.168.86.101 54677 22
+SSH_CONNECTION=192.168.86.101 54677 192.168.86.102 22
+SSHSESSIONID=1018
+SSHSTARTID=3JBL4LGUKYXRRR2I
+SSHWINGROUP=EVERYONE
+SSHWINUSER=rmills
+SSHWINUSERDOMAIN=RMILLSMM-W10
+SystemDrive=C:
+SystemRoot=C:\WINDOWS
+TEMP=C:\Users\rmills\AppData\Local\Temp
+TMP=C:\Users\rmills\AppData\Local\Temp
+USERDOMAIN=RMILLSMM-W10
+USERDOMAIN_ROAMINGPROFILE=RMILLSMM-W10
+USERNAME=rmills
+USERPROFILE=C:\Users\rmills
+VS100COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\
+VS110COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools\
+VS120COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\
+VS140COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\
+VS90COMNTOOLS=c:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\Tools\
+windir=C:\WINDOWS
+windows_tracing_flags=3
+windows_tracing_logfile=C:\BVTBin\Tests\installpackage\csilogfile.log
+WINSSHDGROUP=EVERYONE
+Configuration:
+[settings]
+arch=x86_64
+arch_build=x86_64
+build_type=Release
+compiler=Visual Studio
+compiler.runtime=MD
+compiler.version=16
+os=Windows
+os_build=Windows
+[options]
+webready=False
+[build_requires]
+[env]
+
+conanfile.py: Installing package
+Requirements
+    Expat/2.2.6@pix4d/stable from 'conan-center' - Cache
+    gtest/1.8.1@bincrafters/stable from 'conan-center' - Cache
+    zlib/1.2.11@conan/stable from 'conan-center' - Cache
+Packages
+    Expat/2.2.6@pix4d/stable:00de1c948e01d53a1ee4a6986a4445b2fa3dc04b - Cache
+    gtest/1.8.1@bincrafters/stable:3f0ace30056da8c8008a05842de931e7808916f6 - Cache
+    zlib/1.2.11@conan/stable:3fb49604f9c2f729b85ba3115852006824e72cab - Cache
+
+Installing (downloading, building) binaries...
+Expat/2.2.6@pix4d/stable: Already installed!
+gtest/1.8.1@bincrafters/stable: Already installed!
+zlib/1.2.11@conan/stable: Already installed!
+conanfile.py: Generator txt created conanbuildinfo.txt
+conanfile.py: Generator cmake created conanbuildinfo.cmake
+conanfile.py: Generated conaninfo.txt
+conanfile.py: Generated graphinfo
+conanfile.py imports(): Copied 4 '.dll' files: gtest.dll, gmock.dll, gmock_main.dll, gtest_main.dll
+-- The CXX compiler identification is MSVC 19.28.29337.0
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x64/cl.exe
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x64/cl.exe -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Conan: Using cmake targets configuration
+-- Library zlib found C:/Users/rmills/.conan/data/zlib/1.2.11/conan/stable/package/3fb49604f9c2f729b85ba3115852006824e72cab/lib/zlib.lib
+-- Library gmock_main found C:/Users/rmills/.conan/data/gtest/1.8.1/bincrafters/stable/package/3f0ace30056da8c8008a05842de931e7808916f6/lib/gmock_main.lib
+-- Library gmock found C:/Users/rmills/.conan/data/gtest/1.8.1/bincrafters/stable/package/3f0ace30056da8c8008a05842de931e7808916f6/lib/gmock.lib
+-- Library gtest found C:/Users/rmills/.conan/data/gtest/1.8.1/bincrafters/stable/package/3f0ace30056da8c8008a05842de931e7808916f6/lib/gtest.lib
+-- Library expat found C:/Users/rmills/.conan/data/Expat/2.2.6/pix4d/stable/package/00de1c948e01d53a1ee4a6986a4445b2fa3dc04b/lib/expat.lib
+-- Conan: Adjusting language standard
+-- Current conanbuildinfo.cmake directory: C:/Users/rmills/gnu/github/exiv2/buildserver/build
+-- Looking for C++ include pthread.h
+-- Looking for C++ include pthread.h - not found
+-- Found Threads: TRUE  
+-- Found ZLIB: C:/Users/rmills/.conan/data/zlib/1.2.11/conan/stable/package/3fb49604f9c2f729b85ba3115852006824e72cab/lib/zlib.lib (found version "1.2.11") 
+-- Found EXPAT: C:/Users/rmills/.conan/data/Expat/2.2.6/pix4d/stable/package/00de1c948e01d53a1ee4a6986a4445b2fa3dc04b/lib/expat.lib (found version "2.2.6") 
+-- Looking for gmtime_r
+-- Looking for gmtime_r - not found
+-- Looking for mmap
+-- Looking for mmap - not found
+-- Looking for munmap
+-- Looking for munmap - not found
+-- Looking for strerror_r
+-- Looking for strerror_r - not found
+-- Performing Test EXV_STRERROR_R_CHAR_P
+-- Performing Test EXV_STRERROR_R_CHAR_P - Failed
+-- Looking for C++ include memory.h
+-- Looking for C++ include memory.h - found
+-- Looking for C++ include process.h
+-- Looking for C++ include process.h - found
+-- Looking for C++ include stdbool.h
+-- Looking for C++ include stdbool.h - found
+-- Looking for C++ include strings.h
+-- Looking for C++ include strings.h - not found
+-- Looking for C++ include sys/stat.h
+-- Looking for C++ include sys/stat.h - found
+-- Looking for C++ include sys/types.h
+-- Looking for C++ include sys/types.h - found
+-- Looking for C++ include inttypes.h
+-- Looking for C++ include inttypes.h - found
+-- Looking for C++ include unistd.h
+-- Looking for C++ include unistd.h - not found
+-- Looking for C++ include sys/mman.h
+-- Looking for C++ include sys/mman.h - not found
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Failed
+-- Performing Test COMPILER_HAS_DEPRECATED
+-- Performing Test COMPILER_HAS_DEPRECATED - Success
+-- Found GTest: C:/Users/rmills/.conan/data/gtest/1.8.1/bincrafters/stable/package/3f0ace30056da8c8008a05842de931e7808916f6/lib/gtest.lib  
+-- Install prefix:    C:/Users/rmills/gnu/github/exiv2/buildserver/dist${profile}
+-- ------------------------------------------------------------------
+-- CMake Generator:   Visual Studio 16 2019
+-- CMAKE_BUILD_TYPE:  Release
+-- Compiler info: MSVC (C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x64/cl.exe) ; version: 19.28.29337.0
+-- CMAKE_CXX_STANDARD:98
+--  --- Compiler flags --- 
+-- General:           /DWIN32 /D_WINDOWS /W3 /GR /EHsc 
+	 /MP
+	 /Zc:__cplusplus
+-- Extra:              
+-- Debug:             /MDd /Zi /Ob0 /Od /RTC1
+-- Release:           /MD /O2  /DNDEBUG
+-- RelWithDebInfo:    /MD /Zi /O2  /DNDEBUG
+-- MinSizeRel:        /MD /O1  /DNDEBUG
+--  --- Linker flags --- 
+-- General:           /machine:x64
+-- Debug:             /debug /INCREMENTAL
+-- Release:           /INCREMENTAL:NO
+-- RelWithDebInfo:    /debug /INCREMENTAL
+-- MinSizeRel:        /INCREMENTAL:NO
+-- 
+-- Compiler Options
+-- Warnings as errors:                 NO
+-- Use extra compiler warning flags:   NO
+-- 
+-- ------------------------------------------------------------------
+-- Building shared library:            YES
+-- Building PNG support:               YES
+-- XMP metadata support:               YES
+-- Building BMFF support:              NO
+-- Native language support:            NO
+-- Conversion of Windows XP tags:      YES
+-- Nikon lens database:                YES
+-- Building video support:             NO
+-- Building webready support:          NO
+-- Dynamic runtime override:           YES
+-- Unicode paths (wstring):            NO
+-- Building exiv2 command:             YES
+-- Building samples:                   YES
+-- Building unit tests:                YES
+-- Building doc:                       NO
+-- Building with coverage flags:       NO
+-- Using ccache:                       NO
+-- ------------------------------------------------------------------
+--  WARNING: Deprecated features: EPS, Video, Ssh
+-- ------------------------------------------------------------------
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/rmills/gnu/github/exiv2/buildserver/build
+Microsoft (R) Build Engine version 16.8.3+39993bd9d for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Checking Build System
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/src/CMakeLists.txt
+canonmn_int.cpp
+casiomn_int.cpp
+cr2header_int.cpp
+crwimage_int.cpp
+fujimn_int.cpp
+helper_functions.cpp
+image_int.cpp
+makernote_int.cpp
+minoltamn_int.cpp
+nikonmn_int.cpp
+olympusmn_int.cpp
+orfimage_int.cpp
+panasonicmn_int.cpp
+pentaxmn_int.cpp
+rw2image_int.cpp
+samsungmn_int.cpp
+sigmamn_int.cpp
+sonymn_int.cpp
+tags_int.cpp
+tiffcomposite_int.cpp
+tiffimage_int.cpp
+tiffvisitor_int.cpp
+pngchunk_int.cpp
+exiv2lib_int.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\src\exiv2lib_int.dir\Release\exiv2lib_int.lib
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/xmpsdk/CMakeLists.txt
+ExpatAdapter.cpp
+MD5.cpp
+ParseRDF.cpp
+UnicodeConversions.cpp
+WXMPIterator.cpp
+WXMPMeta.cpp
+WXMPUtils.cpp
+XML_Node.cpp
+XMPCore_Impl.cpp
+XMPIterator.cpp
+XMPMeta-GetSet.cpp
+XMPMeta-Parse.cpp
+XMPMeta-Serialize.cpp
+XMPMeta.cpp
+XMPUtils-FileInfo.cpp
+XMPUtils.cpp
+exiv2-xmp.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\lib\Release\exiv2-xmp.lib
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/src/CMakeLists.txt
+basicio.cpp
+bmpimage.cpp
+convert.cpp
+cr2image.cpp
+crwimage.cpp
+datasets.cpp
+easyaccess.cpp
+epsimage.cpp
+error.cpp
+exif.cpp
+futils.cpp
+gifimage.cpp
+http.cpp
+image.cpp
+ini.cpp
+iptc.cpp
+jp2image.cpp
+jpgimage.cpp
+metadatum.cpp
+mrwimage.cpp
+orfimage.cpp
+pgfimage.cpp
+preview.cpp
+properties.cpp
+psdimage.cpp
+rafimage.cpp
+rw2image.cpp
+tags.cpp
+tgaimage.cpp
+tiffimage.cpp
+types.cpp
+value.cpp
+version.cpp
+webpimage.cpp
+xmp.cpp
+xmpsidecar.cpp
+pngimage.cpp
+bmffimage.cpp
+Auto build dll exports
+   Creating library C:/Users/rmills/gnu/github/exiv2/buildserver/build/lib/Release/exiv2.lib and object C:/Users/rmills/gnu/github/exiv2/buildserver/build/lib/Release/exiv2.exp
+exiv2lib.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exiv2.dll
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+addmoddel.cpp
+addmoddel.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\addmoddel.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+conntest.cpp
+conntest.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\conntest.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+convert-test.cpp
+convert-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\convert-test.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+easyaccess-test.cpp
+easyaccess-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\easyaccess-test.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+exifcomment.cpp
+exifcomment.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exifcomment.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+exifdata.cpp
+exifdata.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exifdata.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+exifdata-test.cpp
+exifdata-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exifdata-test.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+exifprint.cpp
+exifprint.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exifprint.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+exifvalue.cpp
+exifvalue.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exifvalue.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/src/CMakeLists.txt
+exiv2.cpp
+actions.cpp
+getopt.cpp
+utils.cpp
+exiv2.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exiv2.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+exiv2json.cpp
+Jzon.cpp
+exiv2json.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exiv2json.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+geotag.cpp
+geotag.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\geotag.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+getopt-test.cpp
+utils.cpp
+getopt.cpp
+getopt-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\getopt-test.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+ini-test.cpp
+ini-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\ini-test.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+iotest.cpp
+iotest.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\iotest.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+iptceasy.cpp
+iptceasy.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\iptceasy.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+iptcprint.cpp
+iptcprint.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\iptcprint.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+iptctest.cpp
+iptctest.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\iptctest.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+key-test.cpp
+key-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\key-test.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+largeiptc-test.cpp
+largeiptc-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\largeiptc-test.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+metacopy.cpp
+utils.cpp
+getopt.cpp
+metacopy.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\metacopy.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+mmap-test.cpp
+mmap-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\mmap-test.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+mrwthumb.cpp
+mrwthumb.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\mrwthumb.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+path-test.cpp
+utils.cpp
+getopt.cpp
+path-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\path-test.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+prevtest.cpp
+prevtest.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\prevtest.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+remotetest.cpp
+remotetest.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\remotetest.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+stringto-test.cpp
+stringto-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\stringto-test.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+taglist.cpp
+taglist.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\taglist.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+tiff-test.cpp
+tiff-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\tiff-test.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/unitTests/CMakeLists.txt
+mainTestRunner.cpp
+test_DateValue.cpp
+test_TimeValue.cpp
+test_XmpKey.cpp
+test_basicio.cpp
+test_cr2header_int.cpp
+test_enforce.cpp
+test_FileIo.cpp
+test_futils.cpp
+test_helper_functions.cpp
+test_image_int.cpp
+test_safe_op.cpp
+test_slice.cpp
+test_tiffheader.cpp
+test_types.cpp
+test_LangAltValueRead.cpp
+basicio.cpp
+bmpimage.cpp
+convert.cpp
+cr2image.cpp
+crwimage.cpp
+datasets.cpp
+easyaccess.cpp
+epsimage.cpp
+error.cpp
+exif.cpp
+futils.cpp
+gifimage.cpp
+http.cpp
+image.cpp
+ini.cpp
+iptc.cpp
+jp2image.cpp
+jpgimage.cpp
+metadatum.cpp
+mrwimage.cpp
+orfimage.cpp
+pgfimage.cpp
+preview.cpp
+properties.cpp
+psdimage.cpp
+rafimage.cpp
+rw2image.cpp
+tags.cpp
+tgaimage.cpp
+tiffimage.cpp
+types.cpp
+value.cpp
+version.cpp
+webpimage.cpp
+xmp.cpp
+xmpsidecar.cpp
+pngimage.cpp
+bmffimage.cpp
+canonmn_int.cpp
+casiomn_int.cpp
+cr2header_int.cpp
+crwimage_int.cpp
+fujimn_int.cpp
+helper_functions.cpp
+image_int.cpp
+makernote_int.cpp
+minoltamn_int.cpp
+nikonmn_int.cpp
+olympusmn_int.cpp
+orfimage_int.cpp
+panasonicmn_int.cpp
+pentaxmn_int.cpp
+rw2image_int.cpp
+samsungmn_int.cpp
+sigmamn_int.cpp
+sonymn_int.cpp
+tags_int.cpp
+tiffcomposite_int.cpp
+tiffimage_int.cpp
+tiffvisitor_int.cpp
+pngchunk_int.cpp
+unit_tests.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\unit_tests.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+werror-test.cpp
+werror-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\werror-test.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+write-test.cpp
+write-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\write-test.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+write2-test.cpp
+write2-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\write2-test.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+xmpdump.cpp
+xmpdump.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\xmpdump.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+xmpparse.cpp
+xmpparse.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\xmpparse.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+xmpparser-test.cpp
+xmpparser-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\xmpparser-test.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+xmpprint.cpp
+xmpprint.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\xmpprint.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/samples/CMakeLists.txt
+xmpsample.cpp
+xmpsample.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\xmpsample.exe
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/CMakeLists.txt
+Microsoft (R) Build Engine version 16.8.3+39993bd9d for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+exiv2lib_int.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\src\exiv2lib_int.dir\Release\exiv2lib_int.lib
+exiv2-xmp.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\lib\Release\exiv2-xmp.lib
+Auto build dll exports
+exiv2lib.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exiv2.dll
+addmoddel.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\addmoddel.exe
+conntest.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\conntest.exe
+convert-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\convert-test.exe
+easyaccess-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\easyaccess-test.exe
+exifcomment.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exifcomment.exe
+exifdata.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exifdata.exe
+exifdata-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exifdata-test.exe
+exifprint.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exifprint.exe
+exifvalue.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exifvalue.exe
+exiv2.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exiv2.exe
+exiv2json.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exiv2json.exe
+geotag.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\geotag.exe
+getopt-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\getopt-test.exe
+ini-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\ini-test.exe
+iotest.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\iotest.exe
+iptceasy.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\iptceasy.exe
+iptcprint.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\iptcprint.exe
+iptctest.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\iptctest.exe
+key-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\key-test.exe
+largeiptc-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\largeiptc-test.exe
+metacopy.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\metacopy.exe
+mmap-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\mmap-test.exe
+mrwthumb.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\mrwthumb.exe
+path-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\path-test.exe
+prevtest.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\prevtest.exe
+remotetest.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\remotetest.exe
+stringto-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\stringto-test.exe
+taglist.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\taglist.exe
+tiff-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\tiff-test.exe
+werror-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\werror-test.exe
+write-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\write-test.exe
+write2-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\write2-test.exe
+xmpdump.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\xmpdump.exe
+xmpparse.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\xmpparse.exe
+xmpparser-test.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\xmpparser-test.exe
+xmpprint.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\xmpprint.exe
+xmpsample.vcxproj -> C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\xmpsample.exe
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.000s
+
+OK
+
+[==========] Running 144 tests from 35 test cases.
+[----------] Global test environment set-up.
+[----------] 9 tests from ADateValue
+[ RUN      ] ADateValue.isDefaultConstructed
+[       OK ] ADateValue.isDefaultConstructed (0 ms)
+[ RUN      ] ADateValue.isConstructedWithArgs
+[       OK ] ADateValue.isConstructedWithArgs (0 ms)
+[ RUN      ] ADateValue.readFromByteBufferWithExpectedSize
+[       OK ] ADateValue.readFromByteBufferWithExpectedSize (0 ms)
+[ RUN      ] ADateValue.doNotReadFromByteBufferWithoutExpectedSize
+[       OK ] ADateValue.doNotReadFromByteBufferWithoutExpectedSize (1 ms)
+[ RUN      ] ADateValue.doNotReadFromByteBufferWithExpectedSizeButNotCorrectContent
+[       OK ] ADateValue.doNotReadFromByteBufferWithExpectedSizeButNotCorrectContent (0 ms)
+[ RUN      ] ADateValue.readFromStringWithExpectedSize
+[       OK ] ADateValue.readFromStringWithExpectedSize (0 ms)
+[ RUN      ] ADateValue.doNotReadFromStringWithoutExpectedSize
+[       OK ] ADateValue.doNotReadFromStringWithoutExpectedSize (0 ms)
+[ RUN      ] ADateValue.doNotReadFromStringWithExpectedSizeButNotCorrectContent
+[       OK ] ADateValue.doNotReadFromStringWithExpectedSizeButNotCorrectContent (0 ms)
+[ RUN      ] ADateValue.copyToByteBuffer
+[       OK ] ADateValue.copyToByteBuffer (0 ms)
+[----------] 9 tests from ADateValue (1 ms total)
+
+[----------] 8 tests from ATimeValue
+[ RUN      ] ATimeValue.isDefaultConstructed
+[       OK ] ATimeValue.isDefaultConstructed (0 ms)
+[ RUN      ] ATimeValue.isConstructedWithArgs
+[       OK ] ATimeValue.isConstructedWithArgs (0 ms)
+[ RUN      ] ATimeValue.canBeReadFromStringHMS
+[       OK ] ATimeValue.canBeReadFromStringHMS (0 ms)
+[ RUN      ] ATimeValue.canBeReadFromWideString
+[       OK ] ATimeValue.canBeReadFromWideString (0 ms)
+[ RUN      ] ATimeValue.canBeReadFromWideStringNegative
+[       OK ] ATimeValue.canBeReadFromWideStringNegative (0 ms)
+[ RUN      ] ATimeValue.canBeReadFromWideStringOther
+[       OK ] ATimeValue.canBeReadFromWideStringOther (0 ms)
+[ RUN      ] ATimeValue.cannotReadFromStringWithBadFormat
+[       OK ] ATimeValue.cannotReadFromStringWithBadFormat (0 ms)
+[ RUN      ] ATimeValue.isCopiedToBuffer
+[       OK ] ATimeValue.isCopiedToBuffer (0 ms)
+[----------] 8 tests from ATimeValue (1 ms total)
+
+[----------] 8 tests from AXmpKey
+[ RUN      ] AXmpKey.correctlyInstantiateWithValidKey
+[       OK ] AXmpKey.correctlyInstantiateWithValidKey (0 ms)
+[ RUN      ] AXmpKey.correctlyInstantiatedWithValidPrefixAndProperty
+[       OK ] AXmpKey.correctlyInstantiatedWithValidPrefixAndProperty (0 ms)
+[ RUN      ] AXmpKey.canBeCopiedConstructed
+[       OK ] AXmpKey.canBeCopiedConstructed (0 ms)
+[ RUN      ] AXmpKey.canBeCopied
+[       OK ] AXmpKey.canBeCopied (0 ms)
+[ RUN      ] AXmpKey.canBeCloned
+[       OK ] AXmpKey.canBeCloned (0 ms)
+[ RUN      ] AXmpKey.throwsWithNotRegisteredWellFormedKey
+[       OK ] AXmpKey.throwsWithNotRegisteredWellFormedKey (0 ms)
+[ RUN      ] AXmpKey.throwsWithNotRegisteredPrefix
+[       OK ] AXmpKey.throwsWithNotRegisteredPrefix (0 ms)
+[ RUN      ] AXmpKey.throwsWithBadFormedKey
+[       OK ] AXmpKey.throwsWithBadFormedKey (0 ms)
+[----------] 8 tests from AXmpKey (1 ms total)
+
+[----------] 4 tests from MemIo
+[ RUN      ] MemIo.seek_out_of_bounds_00
+[       OK ] MemIo.seek_out_of_bounds_00 (0 ms)
+[ RUN      ] MemIo.seek_out_of_bounds_01
+[       OK ] MemIo.seek_out_of_bounds_01 (0 ms)
+[ RUN      ] MemIo.seek_out_of_bounds_02
+[       OK ] MemIo.seek_out_of_bounds_02 (0 ms)
+[ RUN      ] MemIo.seek_out_of_bounds_03
+[       OK ] MemIo.seek_out_of_bounds_03 (0 ms)
+[----------] 4 tests from MemIo (0 ms total)
+
+[----------] 7 tests from ACr2Header
+[ RUN      ] ACr2Header.hasExpectedValuesAfterCreation
+[       OK ] ACr2Header.hasExpectedValuesAfterCreation (1 ms)
+[ RUN      ] ACr2Header.sizeIs16Bytes
+[       OK ] ACr2Header.sizeIs16Bytes (0 ms)
+[ RUN      ] ACr2Header.readDataFromBufferWithCorrectSize
+[       OK ] ACr2Header.readDataFromBufferWithCorrectSize (0 ms)
+[ RUN      ] ACr2Header.failToReadDataFromBufferWithCorrectSizeButNull
+[       OK ] ACr2Header.failToReadDataFromBufferWithCorrectSizeButNull (0 ms)
+[ RUN      ] ACr2Header.failToReadDataFromBufferWithSizeDifferentThan16
+[       OK ] ACr2Header.failToReadDataFromBufferWithSizeDifferentThan16 (0 ms)
+[ RUN      ] ACr2Header.failToReadDataFromBufferWithInvalidByteOrder
+[       OK ] ACr2Header.failToReadDataFromBufferWithInvalidByteOrder (0 ms)
+[ RUN      ] ACr2Header.failToReadDataFromBufferWithInvalidTag
+[       OK ] ACr2Header.failToReadDataFromBufferWithInvalidTag (0 ms)
+[----------] 7 tests from ACr2Header (1 ms total)
+
+[----------] 2 tests from enforce
+[ RUN      ] enforce.errMessage
+[       OK ] enforce.errMessage (0 ms)
+[ RUN      ] enforce.exceptionThrown
+[       OK ] enforce.exceptionThrown (0 ms)
+[----------] 2 tests from enforce (0 ms total)
+
+[----------] 8 tests from AFileIO
+[ RUN      ] AFileIO.canBeInstantiatedWithFilePath
+[       OK ] AFileIO.canBeInstantiatedWithFilePath (0 ms)
+[ RUN      ] AFileIO.canBeOpenInReadBinaryMode
+[       OK ] AFileIO.canBeOpenInReadBinaryMode (1 ms)
+[ RUN      ] AFileIO.isOpenDoItsJob
+[       OK ] AFileIO.isOpenDoItsJob (0 ms)
+[ RUN      ] AFileIO.returnsFileSizeIfItsOpened
+[       OK ] AFileIO.returnsFileSizeIfItsOpened (0 ms)
+[ RUN      ] AFileIO.returnsFileSizeEvenWhenFileItIsNotOpened
+[       OK ] AFileIO.returnsFileSizeEvenWhenFileItIsNotOpened (0 ms)
+[ RUN      ] AFileIO.isOpenedAtPosition0
+[       OK ] AFileIO.isOpenedAtPosition0 (0 ms)
+[ RUN      ] AFileIO.canSeekToExistingPositions
+[       OK ] AFileIO.canSeekToExistingPositions (0 ms)
+[ RUN      ] AFileIO.canSeekBeyondEOF
+[       OK ] AFileIO.canSeekBeyondEOF (0 ms)
+[----------] 8 tests from AFileIO (2 ms total)
+
+[----------] 3 tests from strError
+[ RUN      ] strError.returnSuccessAfterClosingFile
+[       OK ] strError.returnSuccessAfterClosingFile (0 ms)
+[ RUN      ] strError.returnNoSuchFileOrDirectoryWhenTryingToOpenNonExistingFile
+[       OK ] strError.returnNoSuchFileOrDirectoryWhenTryingToOpenNonExistingFile (0 ms)
+[ RUN      ] strError.doNotRecognizeUnknownError
+[       OK ] strError.doNotRecognizeUnknownError (0 ms)
+[----------] 3 tests from strError (1 ms total)
+
+[----------] 3 tests from getEnv
+[ RUN      ] getEnv.getsDefaultValueWhenExpectedEnvVariableDoesNotExist
+[       OK ] getEnv.getsDefaultValueWhenExpectedEnvVariableDoesNotExist (0 ms)
+[ RUN      ] getEnv.getsProperValuesWhenExpectedEnvVariableExists
+[       OK ] getEnv.getsProperValuesWhenExpectedEnvVariableExists (0 ms)
+[ RUN      ] getEnv.throwsWhenKeyDoesNotExist
+[       OK ] getEnv.throwsWhenKeyDoesNotExist (0 ms)
+[----------] 3 tests from getEnv (0 ms total)
+
+[----------] 2 tests from urlencode
+[ RUN      ] urlencode.encodesGivenUrl
+[       OK ] urlencode.encodesGivenUrl (0 ms)
+[ RUN      ] urlencode.encodesGivenUrlWithSpace
+[       OK ] urlencode.encodesGivenUrlWithSpace (0 ms)
+[----------] 2 tests from urlencode (0 ms total)
+
+[----------] 2 tests from urldecode
+[ RUN      ] urldecode.decodesGivenUrl
+[       OK ] urldecode.decodesGivenUrl (0 ms)
+[ RUN      ] urldecode.decodesGivenUrlInPlace
+[       OK ] urldecode.decodesGivenUrlInPlace (0 ms)
+[----------] 2 tests from urldecode (0 ms total)
+
+[----------] 2 tests from base64encode
+[ RUN      ] base64encode.encodesValidString
+[       OK ] base64encode.encodesValidString (0 ms)
+[ RUN      ] base64encode.doesNotEncodeWithNotBigEnoughResultSize
+[       OK ] base64encode.doesNotEncodeWithNotBigEnoughResultSize (0 ms)
+[----------] 2 tests from base64encode (1 ms total)
+
+[----------] 1 test from base64decode
+[ RUN      ] base64decode.decodesValidString
+[       OK ] base64decode.decodesValidString (0 ms)
+[----------] 1 test from base64decode (0 ms total)
+
+[----------] 1 test from AUri
+[ RUN      ] AUri.parsesAndDecoreUrl
+[       OK ] AUri.parsesAndDecoreUrl (0 ms)
+[----------] 1 test from AUri (0 ms total)
+
+[----------] 2 tests from string_from_unterminated
+[ RUN      ] string_from_unterminated.terminatedArray
+[       OK ] string_from_unterminated.terminatedArray (0 ms)
+[ RUN      ] string_from_unterminated.unterminatedArray
+[       OK ] string_from_unterminated.unterminatedArray (0 ms)
+[----------] 2 tests from string_from_unterminated (0 ms total)
+
+[----------] 2 tests from binaryToString
+[ RUN      ] binaryToString.zeroStart
+[       OK ] binaryToString.zeroStart (0 ms)
+[ RUN      ] binaryToString.nonZeroStart
+[       OK ] binaryToString.nonZeroStart (0 ms)
+[----------] 2 tests from binaryToString (0 ms total)
+
+[----------] 2 tests from lowLevelAddOverflow
+[ RUN      ] lowLevelAddOverflow.checkUnsignedOverflow
+[       OK ] lowLevelAddOverflow.checkUnsignedOverflow (0 ms)
+[ RUN      ] lowLevelAddOverflow.checkSignedOverflow
+[       OK ] lowLevelAddOverflow.checkSignedOverflow (0 ms)
+[----------] 2 tests from lowLevelAddOverflow (1 ms total)
+
+[----------] 2 tests from safeAdd
+[ RUN      ] safeAdd.checkUnsignedOverflow
+CUSTOMBUILD : warning : Unsupported date format [C:\Users\rmills\gnu\github\exiv2\buildserver\build\tests.vcxproj]
+CUSTOMBUILD : warning : Unsupported date format [C:\Users\rmills\gnu\github\exiv2\buildserver\build\tests.vcxproj]
+CUSTOMBUILD : warning : Unsupported date format [C:\Users\rmills\gnu\github\exiv2\buildserver\build\tests.vcxproj]
+CUSTOMBUILD : warning : Unsupported date format [C:\Users\rmills\gnu\github\exiv2\buildserver\build\tests.vcxproj]
+CUSTOMBUILD : warning : Unsupported time format [C:\Users\rmills\gnu\github\exiv2\buildserver\build\tests.vcxproj]
+CUSTOMBUILD : warning : Unsupported time format [C:\Users\rmills\gnu\github\exiv2\buildserver\build\tests.vcxproj]
+CUSTOMBUILD : warning : Unsupported time format [C:\Users\rmills\gnu\github\exiv2\buildserver\build\tests.vcxproj]
+CUSTOMBUILD : warning : Unsupported time format [C:\Users\rmills\gnu\github\exiv2\buildserver\build\tests.vcxproj]
+CUSTOMBUILD : warning : Unsupported time format [C:\Users\rmills\gnu\github\exiv2\buildserver\build\tests.vcxproj]
+CUSTOMBUILD : warning : Unsupported time format [C:\Users\rmills\gnu\github\exiv2\buildserver\build\tests.vcxproj]
+[       OK ] safeAdd.checkUnsignedOverflow (0 ms)
+[ RUN      ] safeAdd.checkSignedOverflow
+[       OK ] safeAdd.checkSignedOverflow (2 ms)
+[----------] 2 tests from safeAdd (2 ms total)
+
+[----------] 1 test from safeAbs
+[ RUN      ] safeAbs.checkValues
+[       OK ] safeAbs.checkValues (0 ms)
+[----------] 1 test from safeAbs (0 ms total)
+
+[----------] 1 test from pointerSlice
+[ RUN      ] pointerSlice.failedConstructionFromNullpointer
+[       OK ] pointerSlice.failedConstructionFromNullpointer (0 ms)
+[----------] 1 test from pointerSlice (0 ms total)
+
+[----------] 2 tests from containerSlice
+[ RUN      ] containerSlice.failedConstructionFromContainer
+[       OK ] containerSlice.failedConstructionFromContainer (0 ms)
+[ RUN      ] containerSlice.makeSlice
+[       OK ] containerSlice.makeSlice (0 ms)
+[----------] 2 tests from containerSlice (0 ms total)
+
+[----------] 4 tests from stringSlice
+[ RUN      ] stringSlice.at
+[       OK ] stringSlice.at (0 ms)
+[ RUN      ] stringSlice.atFailure
+[       OK ] stringSlice.atFailure (0 ms)
+[ RUN      ] stringSlice.size
+[       OK ] stringSlice.size (0 ms)
+[ RUN      ] stringSlice.mutateString
+[       OK ] stringSlice.mutateString (0 ms)
+[----------] 4 tests from stringSlice (0 ms total)
+
+[----------] 9 tests from slice/0, where TypeParam = class std::vector<int,class std::allocator<int> >
+[ RUN      ] slice/0.atAccess
+[       OK ] slice/0.atAccess (0 ms)
+[ RUN      ] slice/0.iteratorAccess
+[       OK ] slice/0.iteratorAccess (1 ms)
+[ RUN      ] slice/0.constructionFailsFromInvalidRange
+[       OK ] slice/0.constructionFailsFromInvalidRange (0 ms)
+[ RUN      ] slice/0.constructionFailsWithZeroLength
+[       OK ] slice/0.constructionFailsWithZeroLength (0 ms)
+[ RUN      ] slice/0.subSliceSuccessfulConstruction
+[       OK ] slice/0.subSliceSuccessfulConstruction (0 ms)
+[ RUN      ] slice/0.subSliceFunctions
+[       OK ] slice/0.subSliceFunctions (0 ms)
+[ RUN      ] slice/0.subSliceFailedConstruction
+[       OK ] slice/0.subSliceFailedConstruction (0 ms)
+[ RUN      ] slice/0.subSliceConstructionOverflowResistance
+[       OK ] slice/0.subSliceConstructionOverflowResistance (0 ms)
+[ RUN      ] slice/0.constMethodsPreserveConst
+[       OK ] slice/0.constMethodsPreserveConst (0 ms)
+[----------] 9 tests from slice/0 (1 ms total)
+
+[----------] 9 tests from slice/1, where TypeParam = class std::vector<int,class std::allocator<int> >
+[ RUN      ] slice/1.atAccess
+[       OK ] slice/1.atAccess (0 ms)
+[ RUN      ] slice/1.iteratorAccess
+[       OK ] slice/1.iteratorAccess (0 ms)
+[ RUN      ] slice/1.constructionFailsFromInvalidRange
+[       OK ] slice/1.constructionFailsFromInvalidRange (0 ms)
+[ RUN      ] slice/1.constructionFailsWithZeroLength
+[       OK ] slice/1.constructionFailsWithZeroLength (0 ms)
+[ RUN      ] slice/1.subSliceSuccessfulConstruction
+[       OK ] slice/1.subSliceSuccessfulConstruction (0 ms)
+[ RUN      ] slice/1.subSliceFunctions
+[       OK ] slice/1.subSliceFunctions (0 ms)
+[ RUN      ] slice/1.subSliceFailedConstruction
+[       OK ] slice/1.subSliceFailedConstruction (0 ms)
+[ RUN      ] slice/1.subSliceConstructionOverflowResistance
+[       OK ] slice/1.subSliceConstructionOverflowResistance (0 ms)
+[ RUN      ] slice/1.constMethodsPreserveConst
+[       OK ] slice/1.constMethodsPreserveConst (0 ms)
+[----------] 9 tests from slice/1 (0 ms total)
+
+[----------] 9 tests from slice/2, where TypeParam = int * __ptr64
+[ RUN      ] slice/2.atAccess
+[       OK ] slice/2.atAccess (0 ms)
+[ RUN      ] slice/2.iteratorAccess
+[       OK ] slice/2.iteratorAccess (0 ms)
+[ RUN      ] slice/2.constructionFailsFromInvalidRange
+[       OK ] slice/2.constructionFailsFromInvalidRange (0 ms)
+[ RUN      ] slice/2.constructionFailsWithZeroLength
+[       OK ] slice/2.constructionFailsWithZeroLength (0 ms)
+[ RUN      ] slice/2.subSliceSuccessfulConstruction
+[       OK ] slice/2.subSliceSuccessfulConstruction (0 ms)
+[ RUN      ] slice/2.subSliceFunctions
+[       OK ] slice/2.subSliceFunctions (0 ms)
+[ RUN      ] slice/2.subSliceFailedConstruction
+[       OK ] slice/2.subSliceFailedConstruction (0 ms)
+[ RUN      ] slice/2.subSliceConstructionOverflowResistance
+[       OK ] slice/2.subSliceConstructionOverflowResistance (0 ms)
+[ RUN      ] slice/2.constMethodsPreserveConst
+[       OK ] slice/2.constMethodsPreserveConst (0 ms)
+[----------] 9 tests from slice/2 (6 ms total)
+
+[----------] 9 tests from slice/3, where TypeParam = int const * __ptr64
+[ RUN      ] slice/3.atAccess
+[       OK ] slice/3.atAccess (0 ms)
+[ RUN      ] slice/3.iteratorAccess
+[       OK ] slice/3.iteratorAccess (0 ms)
+[ RUN      ] slice/3.constructionFailsFromInvalidRange
+[       OK ] slice/3.constructionFailsFromInvalidRange (0 ms)
+[ RUN      ] slice/3.constructionFailsWithZeroLength
+[       OK ] slice/3.constructionFailsWithZeroLength (0 ms)
+[ RUN      ] slice/3.subSliceSuccessfulConstruction
+[       OK ] slice/3.subSliceSuccessfulConstruction (0 ms)
+[ RUN      ] slice/3.subSliceFunctions
+[       OK ] slice/3.subSliceFunctions (0 ms)
+[ RUN      ] slice/3.subSliceFailedConstruction
+[       OK ] slice/3.subSliceFailedConstruction (0 ms)
+[ RUN      ] slice/3.subSliceConstructionOverflowResistance
+[       OK ] slice/3.subSliceConstructionOverflowResistance (0 ms)
+[ RUN      ] slice/3.constMethodsPreserveConst
+[       OK ] slice/3.constMethodsPreserveConst (0 ms)
+[----------] 9 tests from slice/3 (0 ms total)
+
+[----------] 2 tests from mutableSlice/0, where TypeParam = class std::vector<int,class std::allocator<int> >
+[ RUN      ] mutableSlice/0.iterators
+[       OK ] mutableSlice/0.iterators (0 ms)
+[ RUN      ] mutableSlice/0.at
+[       OK ] mutableSlice/0.at (0 ms)
+[----------] 2 tests from mutableSlice/0 (0 ms total)
+
+[----------] 2 tests from mutableSlice/1, where TypeParam = int * __ptr64
+[ RUN      ] mutableSlice/1.iterators
+[       OK ] mutableSlice/1.iterators (0 ms)
+[ RUN      ] mutableSlice/1.at
+[       OK ] mutableSlice/1.at (0 ms)
+[----------] 2 tests from mutableSlice/1 (0 ms total)
+
+[----------] 2 tests from dataBufSlice/0, where TypeParam = class Exiv2::DataBuf
+[ RUN      ] dataBufSlice/0.successfulConstruction
+[       OK ] dataBufSlice/0.successfulConstruction (0 ms)
+[ RUN      ] dataBufSlice/0.failedConstruction
+[       OK ] dataBufSlice/0.failedConstruction (0 ms)
+[----------] 2 tests from dataBufSlice/0 (0 ms total)
+
+[----------] 2 tests from dataBufSlice/1, where TypeParam = class Exiv2::DataBuf
+[ RUN      ] dataBufSlice/1.successfulConstruction
+[       OK ] dataBufSlice/1.successfulConstruction (0 ms)
+[ RUN      ] dataBufSlice/1.failedConstruction
+[       OK ] dataBufSlice/1.failedConstruction (0 ms)
+[----------] 2 tests from dataBufSlice/1 (0 ms total)
+
+[----------] 8 tests from ATiffHeader
+[ RUN      ] ATiffHeader.hasExpectedValuesAfterCreation
+[       OK ] ATiffHeader.hasExpectedValuesAfterCreation (0 ms)
+[ RUN      ] ATiffHeader.canBeWrittenAndItsSizeIs8Bytes
+[       OK ] ATiffHeader.canBeWrittenAndItsSizeIs8Bytes (0 ms)
+[ RUN      ] ATiffHeader.readDataFromBufferWithCorrectSize
+[       OK ] ATiffHeader.readDataFromBufferWithCorrectSize (0 ms)
+[ RUN      ] ATiffHeader.failToReadDataFromBufferWithCorrectSizeButNull
+[       OK ] ATiffHeader.failToReadDataFromBufferWithCorrectSizeButNull (0 ms)
+[ RUN      ] ATiffHeader.failToReadDataFromBufferWithSizeDifferentThan8
+[       OK ] ATiffHeader.failToReadDataFromBufferWithSizeDifferentThan8 (0 ms)
+[ RUN      ] ATiffHeader.failToReadDataFromBufferWithInvalidByteOrder
+[       OK ] ATiffHeader.failToReadDataFromBufferWithInvalidByteOrder (0 ms)
+[ RUN      ] ATiffHeader.failToReadDataFromBufferWithInvalidTag
+[       OK ] ATiffHeader.failToReadDataFromBufferWithInvalidTag (0 ms)
+[ RUN      ] ATiffHeader.printsDefaultValues
+[       OK ] ATiffHeader.printsDefaultValues (1 ms)
+[----------] 8 tests from ATiffHeader (1 ms total)
+
+[----------] 2 tests from ExivTime
+[ RUN      ] ExivTime.getsTimeFromValidString
+[       OK ] ExivTime.getsTimeFromValidString (0 ms)
+[ RUN      ] ExivTime.doesNotGetTimeWithBadFormedString
+[       OK ] ExivTime.doesNotGetTimeWithBadFormedString (0 ms)
+[----------] 2 tests from ExivTime (0 ms total)
+
+[----------] 2 tests from DataBuf
+[ RUN      ] DataBuf.pointsToNullByDefault
+[       OK ] DataBuf.pointsToNullByDefault (0 ms)
+[ RUN      ] DataBuf.allocatesDataWithNonEmptyConstructor
+[       OK ] DataBuf.allocatesDataWithNonEmptyConstructor (0 ms)
+[----------] 2 tests from DataBuf (0 ms total)
+
+[----------] 1 test from Rational
+[ RUN      ] Rational.floatToRationalCast
+[       OK ] Rational.floatToRationalCast (0 ms)
+[----------] 1 test from Rational (0 ms total)
+
+[----------] 11 tests from LangAltValueReadTest
+[ RUN      ] LangAltValueReadTest.noLangugeValBeforeSpace
+[       OK ] LangAltValueReadTest.noLangugeValBeforeSpace (0 ms)
+[ RUN      ] LangAltValueReadTest.quoteThenNoLangugeValBeforeSpace
+[       OK ] LangAltValueReadTest.quoteThenNoLangugeValBeforeSpace (0 ms)
+[ RUN      ] LangAltValueReadTest.emptyDoubleQuotesLanguageValBeforeSpace
+[       OK ] LangAltValueReadTest.emptyDoubleQuotesLanguageValBeforeSpace (0 ms)
+[ RUN      ] LangAltValueReadTest.emptyDoubleQuotesLanguageValNoSpace
+[       OK ] LangAltValueReadTest.emptyDoubleQuotesLanguageValNoSpace (0 ms)
+[ RUN      ] LangAltValueReadTest.oneDoubleQuotesLanguageValNoSpace
+[       OK ] LangAltValueReadTest.oneDoubleQuotesLanguageValNoSpace (0 ms)
+[ RUN      ] LangAltValueReadTest.oneDoubleQuotesLanguageValBeforeSpace
+[       OK ] LangAltValueReadTest.oneDoubleQuotesLanguageValBeforeSpace (0 ms)
+[ RUN      ] LangAltValueReadTest.languageValOneDoubleQuotesBeforeSpace
+[       OK ] LangAltValueReadTest.languageValOneDoubleQuotesBeforeSpace (0 ms)
+[ RUN      ] LangAltValueReadTest.languageValOneDoubleQuotesNoSpace
+[       OK ] LangAltValueReadTest.languageValOneDoubleQuotesNoSpace (0 ms)
+[ RUN      ] LangAltValueReadTest.languageValTwoDoubleQuotesNoSpace
+[       OK ] LangAltValueReadTest.languageValTwoDoubleQuotesNoSpace (0 ms)
+[ RUN      ] LangAltValueReadTest.languageValExtraHyphenBeforeSpace
+[       OK ] LangAltValueReadTest.languageValExtraHyphenBeforeSpace (0 ms)
+[ RUN      ] LangAltValueReadTest.languageValWithInvalidCharBeforeSpace
+[       OK ] LangAltValueReadTest.languageValWithInvalidCharBeforeSpace (0 ms)
+[----------] 11 tests from LangAltValueReadTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 144 tests from 35 test cases ran. (19 ms total)
+[  PASSED  ] 144 tests.
+Tests finished with return value: 0
+addmoddel_test (testcases.TestCases) ... ok
+conversions_test (testcases.TestCases) ... ok
+crw_test (testcases.TestCases) ... ok
+exifdata_test (testcases.TestCases) ... ok
+exiv2_test (testcases.TestCases) ... ok
+geotag_test (testcases.TestCases) ... ok
+icc_test (testcases.TestCases) ... ok
+image_test (testcases.TestCases) ... ok
+io_test (testcases.TestCases) ... 127.0.0.1 - - [15/Jun/2021 15:17:20] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:21] "HEAD /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:21] "GET /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:21] "HEAD /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:21] "GET /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:21] "HEAD /Reagan.tiff HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:21] "GET /Reagan.tiff HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:23] "HEAD /Reagan.tiff HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:23] "GET /Reagan.tiff HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:23] "HEAD /exiv2-bug922a.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:23] "GET /exiv2-bug922a.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:24] "HEAD /exiv2-bug922a.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:24] "GET /exiv2-bug922a.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:24] "HEAD /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:24] "GET /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:24] "HEAD /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:24] "GET /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:24] "HEAD /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:17:24] "GET /table.jpg HTTP/1.0" 200 -
+ok
+iptc_test (testcases.TestCases) ... ok
+iso65k_test (testcases.TestCases) ... ok
+modify_test (testcases.TestCases) ... ok
+nls_test (testcases.TestCases) ... ok
+path_test (testcases.TestCases) ... ok
+png_test (testcases.TestCases) ... ok
+preview_test (testcases.TestCases) ... ok
+stdin_test (testcases.TestCases) ... ok
+stringto_test (testcases.TestCases) ... ok
+tiff_test (testcases.TestCases) ... ok
+version_test (testcases.TestCases) ... ok
+webp_test (testcases.TestCases) ... ok
+write2_test (testcases.TestCases) ... ok
+write_test (testcases.TestCases) ... ok
+xmpparser_test (testcases.TestCases) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 91.128s
+
+OK
+Skipped. Because exiv2 is not built with nls.
+........127.0.0.1 - - [15/Jun/2021 15:18:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:55] "HEAD /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:55] "GET /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:56] "HEAD /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:56] "GET /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:56] "HEAD /Reagan.tiff HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:56] "GET /Reagan.tiff HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:56] "HEAD /Reagan.tiff HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:56] "GET /Reagan.tiff HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:56] "HEAD /exiv2-bug922a.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:56] "GET /exiv2-bug922a.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:58] "HEAD /exiv2-bug922a.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:58] "GET /exiv2-bug922a.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:58] "HEAD /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:58] "GET /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:58] "HEAD /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:58] "GET /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:58] "HEAD /table.jpg HTTP/1.0" 200 -
+127.0.0.1 - - [15/Jun/2021 15:18:58] "GET /table.jpg HTTP/1.0" 200 -
+....................................................s.................s...s....s............ss............s....................sss...............................s...................................................s..........
+----------------------------------------------------------------------
+Ran 232 tests in 182.262s
+
+OK (skipped=12)
+Skipped. Because exiv2 is not built with nls.
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.000s
+
+OK
+exiv2                0.27.4
+platform             windows
+compiler             MSVC
+bits                 64
+dll                  1
+debug                0
+cplusplus            201402
+version              13.28 (2019/x64)
+date                 Jun 15 2021
+time                 15:10:10
+processpath          C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin
+package_name         exiv2
+curl                 0
+executable           C:\Users\rmills\gnu\github\exiv2\buildserver\build\bin\exiv2.exe
+library              [ C:\WINDOWS\SYSTEM32\ntdll.dll   +22 ]
+have_inttypes        0
+have_libintl         0
+have_lensdata        1
+have_iconv           0
+have_memory          1
+have_lstat           0
+have_regex           0
+have_regex_h         0
+have_stdbool         1
+have_stdint          1
+have_stdlib          0
+have_strlib          0
+have_strerror_r      0
+have_strings_h       0
+have_mmap            0
+have_munmap          0
+have_sys_stat        1
+have_unistd_h        0
+have_sys_mman        0
+have_libz            1
+have_xmptoolkit      1
+adobe_xmpsdk         0
+have_bool            0
+have_strings         0
+have_sys_types       1
+have_unistd          0
+have_unicode_path    0
+enable_bmff          0
+enable_video         0
+enable_webready      0
+enable_nls           0
+use_curl             0
+use_ssh              0
+config_path          C:\Users\rmills\exiv2.ini
+xmlns                [ DICOM:http://ns.adobe.com/DICOM/   +66 ]
+Building Custom Rule C:/Users/rmills/gnu/github/exiv2/buildserver/CMakeLists.txt
