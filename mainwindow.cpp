@@ -29,6 +29,7 @@ void MainWindow::setupTabView(int index, int year){
     }
     else{
         newTable->setParent(ui->tabWidget->widget(index));
+        ui->tabWidget->setTabText(index, QString::number(year));
     }
     QVBoxLayout *layout = new QVBoxLayout;
     ui->tabWidget->setLayout(layout);

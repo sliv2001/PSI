@@ -20,11 +20,12 @@ public:
      * Эта функция создаёт на index-том табе табвью с этим номером года
     */
     void setupTabView(int index, int year);
+    Ui::MainWindow *ui;
 
 private slots:
     void on_tabWidget_objectNameChanged(const QString &objectName);
 
 private:
-    Ui::MainWindow *ui;
+
 };
 #endif // MAINWINDOW_H

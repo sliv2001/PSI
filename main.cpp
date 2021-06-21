@@ -1,8 +1,11 @@
 #include "mainwindow.h"
-
+#include "test_mainwindow.h"
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
+#include <QTest>
+
+
 
 int main(int argc, char *argv[])
 {
@@ -17,7 +20,12 @@ int main(int argc, char *argv[])
             break;
         }
     }
+#ifndef TESTING
     MainWindow w;
     w.show();
     return a.exec();
+#else
+    freopen("testing.log", "w", stdout);
+    QTest::qExec(new Test_mainwindow, argc, argv);
+#endif
 }
