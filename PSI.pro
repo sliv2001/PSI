@@ -13,6 +13,7 @@ INCLUDEPATH += \
 
 LIBS += \
     -L"3RDP/exiv2-0.27.4-2019msvc64/lib/exiv2.lib"
+    -L"3RDP/exiv2-0.27.4-2019msvc64/lib/exiv2-xmp.lib"
 
 SOURCES += \
     main.cpp \

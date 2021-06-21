@@ -78,7 +78,7 @@ namespace Exiv2 {
     class EXIV2API Image {
     public:
         //! Image auto_ptr type
-        typedef auto_ptr<Image> AutoPtr;
+        typedef std::auto_ptr<Image> AutoPtr;
 
         //! @name Creators
         //@{

@@ -51,7 +51,7 @@ namespace Exiv2 {
     class EXIV2API Value {
     public:
         //! Shortcut for a %Value auto pointer.
-        typedef auto_ptr<Value> AutoPtr;
+        typedef std::auto_ptr<Value> AutoPtr;
 
         //! @name Creators
         //@{
@@ -253,7 +253,7 @@ namespace Exiv2 {
     class EXIV2API DataValue : public Value {
     public:
         //! Shortcut for a %DataValue auto pointer.
-        typedef auto_ptr<DataValue> AutoPtr;
+        typedef std::auto_ptr<DataValue> AutoPtr;
 
         explicit DataValue(TypeId typeId =undefined);
 
@@ -335,7 +335,7 @@ namespace Exiv2 {
     class EXIV2API StringValueBase : public Value {
     public:
         //! Shortcut for a %StringValueBase auto pointer.
-        typedef auto_ptr<StringValueBase> AutoPtr;
+        typedef std::auto_ptr<StringValueBase> AutoPtr;
 
         //! @name Creators
         //@{
@@ -417,7 +417,7 @@ namespace Exiv2 {
     class EXIV2API StringValue : public StringValueBase {
     public:
         //! Shortcut for a %StringValue auto pointer.
-        typedef auto_ptr<StringValue> AutoPtr;
+        typedef std::auto_ptr<StringValue> AutoPtr;
 
         //! @name Creators
         //@{
@@ -449,7 +449,7 @@ namespace Exiv2 {
     class EXIV2API AsciiValue : public StringValueBase {
     public:
         //! Shortcut for a %AsciiValue auto pointer.
-        typedef auto_ptr<AsciiValue> AutoPtr;
+        typedef std::auto_ptr<AsciiValue> AutoPtr;
 
         //! @name Creators
         //@{
@@ -537,7 +537,7 @@ namespace Exiv2 {
         }; // class CharsetInfo
 
         //! Shortcut for a %CommentValue auto pointer.
-        typedef auto_ptr<CommentValue> AutoPtr;
+        typedef std::auto_ptr<CommentValue> AutoPtr;
 
         //! @name Creators
         //@{
@@ -624,7 +624,7 @@ namespace Exiv2 {
     class EXIV2API XmpValue : public Value {
     public:
         //! Shortcut for a %XmpValue auto pointer.
-        typedef auto_ptr<XmpValue> AutoPtr;
+        typedef std::auto_ptr<XmpValue> AutoPtr;
 
         //! XMP array types.
         enum XmpArrayType { xaNone, xaAlt, xaBag, xaSeq };
@@ -715,7 +715,7 @@ namespace Exiv2 {
     class EXIV2API XmpTextValue : public XmpValue {
     public:
         //! Shortcut for a %XmpTextValue auto pointer.
-        typedef auto_ptr<XmpTextValue> AutoPtr;
+        typedef std::auto_ptr<XmpTextValue> AutoPtr;
 
         //! @name Creators
         //@{
@@ -797,7 +797,7 @@ namespace Exiv2 {
     class EXIV2API XmpArrayValue : public XmpValue {
     public:
         //! Shortcut for a %XmpArrayValue auto pointer.
-        typedef auto_ptr<XmpArrayValue> AutoPtr;
+        typedef std::auto_ptr<XmpArrayValue> AutoPtr;
 
         //! @name Creators
         //@{
@@ -890,7 +890,7 @@ namespace Exiv2 {
     class EXIV2API LangAltValue : public XmpValue {
     public:
         //! Shortcut for a %LangAltValue auto pointer.
-        typedef auto_ptr<LangAltValue> AutoPtr;
+        typedef std::auto_ptr<LangAltValue> AutoPtr;
 
         //! @name Creators
         //@{
@@ -978,7 +978,7 @@ namespace Exiv2 {
     class EXIV2API DateValue : public Value {
     public:
         //! Shortcut for a %DateValue auto pointer.
-        typedef auto_ptr<DateValue> AutoPtr;
+        typedef std::auto_ptr<DateValue> AutoPtr;
 
         //! @name Creators
         //@{
@@ -1079,7 +1079,7 @@ namespace Exiv2 {
     class EXIV2API TimeValue : public Value {
     public:
         //! Shortcut for a %TimeValue auto pointer.
-        typedef auto_ptr<TimeValue> AutoPtr;
+        typedef std::auto_ptr<TimeValue> AutoPtr;
 
         //! @name Creators
         //@{
@@ -1235,7 +1235,7 @@ namespace Exiv2 {
     class ValueType : public Value {
     public:
         //! Shortcut for a %ValueType\<T\> auto pointer.
-        typedef auto_ptr<ValueType<T> > AutoPtr;
+        typedef std::auto_ptr<ValueType<T> > AutoPtr;
 
         //! @name Creators
         //@{

@@ -30,7 +30,7 @@
 #include "types.hpp"
 
 // + standard includes
-#include <memory>       // for auto_ptr
+#include <memory>       // for std::auto_ptr
 
 // The way to handle data from stdin or data uri path. If EXV_XPATH_MEMIO = 1,
 // it uses MemIo. Otherwises, it uses FileIo.
@@ -55,7 +55,7 @@ namespace Exiv2 {
     class EXIV2API BasicIo {
     public:
         //! BasicIo auto_ptr type
-        typedef auto_ptr<BasicIo> AutoPtr;
+        typedef std::auto_ptr<BasicIo> AutoPtr;
 
         //! Seek starting positions
         enum Position { beg, cur, end };
@@ -521,7 +521,7 @@ namespace Exiv2 {
 
         // Pimpl idiom
         class Impl;
-        auto_ptr<Impl> p_;
+        std::auto_ptr<Impl> p_;
 
     }; // class FileIo
 
@@ -721,7 +721,7 @@ namespace Exiv2 {
 
         // Pimpl idiom
         class Impl;
-        auto_ptr<Impl> p_;
+        std::auto_ptr<Impl> p_;
 
     }; // class MemIo
 
