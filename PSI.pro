@@ -8,13 +8,6 @@ CONFIG += c++11
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-INCLUDEPATH += \
-    3RDP/exiv2-0.27.4-2019msvc64/include
-
-LIBS += \
-    -L"3RDP/exiv2-0.27.4-2019msvc64/lib/exiv2.lib"
-    -L"3RDP/exiv2-0.27.4-2019msvc64/lib/exiv2-xmp.lib"
-
 SOURCES += \
     main.cpp \
     mainwindow.cpp \

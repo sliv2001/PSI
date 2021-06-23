@@ -37,34 +37,7 @@ QFileSystemModel* MainWindow::getFilesToModel(QString dir){
 }
 
 int MainWindow::getYear(QString photoPath){
-    if (photoPath==""){
-        qWarning("Empty or incomplete string input");
-        return -1;
-    }
-    Exiv2::Image::AutoPtr image = Exiv2::ImageFactory::open(photoPath.toStdString());
-    assert(image.get() != 0);
-    image->readMetadata();
-
-    Exiv2::ExifData &exifData = image->exifData();
-    if (exifData.empty()) {
-        qWarning(": No Exif data found in the file");
-        return -1;
-    }
-    Exiv2::Exifdatum& tag = exifData["Exif.Photo.DateTimeOriginal"];
-    QString yearStr = QString::fromStdString(tag.toString());
-    if (yearStr.length()<4){
-        qWarning("Wrong date");
-        return -1;
-    }
-
-    bool ok;
-    int year = yearStr.left(4).toInt(&ok);
-    if (!ok||year<1500||year>2500){
-        qWarning("Wrong date");
-        return -1;
-    }
-
-    return year;
+    return 0;
 }
 
 void MainWindow::on_tabWidget_objectNameChanged(const QString &objectName)
