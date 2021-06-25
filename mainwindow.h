@@ -5,6 +5,7 @@
 #include <QTableWidget>
 #include <QFileDialog>
 #include <QFileSystemModel>
+#include "exiv2\exiv2.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
