@@ -17,3 +17,7 @@ void Test_mainwindow::test_setupTabView(){
     }
     QCOMPARE(w.ui->tabWidget->count(), 5);
 }
+
+void Test_mainwindow::test_getYear(){
+    //QCOMPARE(MainWindow::getYear("./test/1.jpg"), 0);
+}

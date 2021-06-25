@@ -37,7 +37,36 @@ QFileSystemModel* MainWindow::getFilesToModel(QString dir){
 }
 
 int MainWindow::getYear(QString photoPath){
-    return 0;
+    if (!QFile(photoPath).exists()){
+        qWarning("File %s does not exist", photoPath.toStdString().c_str());
+        return -1;
+    }
+    QString date;
+    try {
+        Exiv2::Image::UniquePtr image = Exiv2::ImageFactory::open(photoPath.toStdString().c_str());
+        assert(image.get() != 0);
+        image->readMetadata();
+        Exiv2::ExifData &data = image->exifData();
+
+        date = QString::fromStdString(data["Exif.Photo.DateTimeOriginal"].toString());
+        date = date.left(4);
+    }  catch (Exiv2::AnyError &err) {
+        qWarning("Couldnot read metadata \"Exif.Photo.DateTimeOriginal\" from file %s.",
+                 photoPath.toStdString().c_str());
+        return 0;
+    }
+
+    bool ok=false;
+    int year = date.toInt(&ok);
+    if (!ok){
+        qWarning("Couldnot get year of photo %s", photoPath.toStdString().c_str());
+        return 0;
+    }
+    if (year<1500||year>2500){
+        qWarning("Year of photo %s is out of range", photoPath.toStdString().c_str());
+        return 0;
+    }
+    return year;
 }
 
 void MainWindow::on_tabWidget_objectNameChanged(const QString &objectName)
@@ -57,5 +86,6 @@ void MainWindow::on_action_2_triggered()
     QString dir = QFileDialog::getExistingDirectory(this, "Выбор папки для импорта", QDir::homePath());
     if (dir!="")
         getFilesToModel(dir);
+    getYear("1.jpg");
 }
 

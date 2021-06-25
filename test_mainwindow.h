@@ -11,7 +11,7 @@ public:
 
 private slots:
     void test_setupTabView();
-
+    void test_getYear();
 signals:
 
 };

@@ -24,7 +24,7 @@ public:
     */
     void setupTabView(int index, int year);
     QFileSystemModel* getFilesToModel(QString dir);
-    int getYear(QString photoPath);
+    static int getYear(QString photoPath);
 
     Ui::MainWindow *ui;
 
