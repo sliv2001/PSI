@@ -5,8 +5,6 @@
 #include <QTranslator>
 #include <QTest>
 
-//#define TESTING
-
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);

@@ -5,7 +5,9 @@
 #include <QTableWidget>
 #include <QFileDialog>
 #include <QFileSystemModel>
-#include "exiv2\exiv2.hpp"
+#include "exiv2/exiv2.hpp"
+
+#define TESTING
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,14 +21,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    /**
-     * Эта функция создаёт на index-том табе табвью с этим номером года
-    */
-    void setupTabView(int index, int year);
-    QFileSystemModel* getFilesToModel(QString dir);
-    static int getYear(QString photoPath);
-
     Ui::MainWindow *ui;
+    static int getYear(QString photoPath);
 
 private slots:
     void on_tabWidget_objectNameChanged(const QString &objectName);
@@ -34,6 +30,8 @@ private slots:
     void on_tabWidget_currentChanged(int index);
 
     void on_action_2_triggered();
+
+    void on_action_triggered();
 
 private:
 

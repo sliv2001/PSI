@@ -10,7 +10,6 @@ public:
     explicit Test_mainwindow(QObject *parent = nullptr);
 
 private slots:
-    void test_setupTabView();
     void test_getYear();
 signals:
 

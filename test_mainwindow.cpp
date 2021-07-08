@@ -8,16 +8,7 @@ Test_mainwindow::Test_mainwindow(QObject *parent) : QObject(parent)
 
 }
 
-void Test_mainwindow::test_setupTabView(){
-    MainWindow w;
-    int i;
-    for (i=0; i<5; i++){
-        w.setupTabView(i, i);
-        QCOMPARE(w.ui->tabWidget->tabText(i), QString::number(i));
-    }
-    QCOMPARE(w.ui->tabWidget->count(), 5);
-}
-
 void Test_mainwindow::test_getYear(){
-    //QCOMPARE(MainWindow::getYear("./test/1.jpg"), 0);
+    QCOMPARE(MainWindow::getYear("1.JPG"), 2021);
+    QCOMPARE(MainWindow::getYear("2.jpg"), 0);
 }
