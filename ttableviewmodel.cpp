@@ -20,15 +20,20 @@ int TTableViewModel::rowCount(const QModelIndex &) const
 int TTableViewModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return 0;
+    return 6;
 }
 
 QVariant TTableViewModel::data(const QModelIndex &index, int role) const
 {
     QVariant value;
+
     switch (role){
         case Qt::DisplayRole:{
             switch (index.column()) {
+            case 0:{
+                value = QFileInfo(this->values->at(index.row()).fullPath).fileName();
+                break;
+            }
             case 1:{
                 value = QString::number(this->values->at(index.row()).year); //year
                 break;
@@ -50,18 +55,17 @@ QVariant TTableViewModel::data(const QModelIndex &index, int role) const
                 break;
             }
             default:{
-                value="";
+                break;
             }
             }
+            break;
         }
-        break;
         case Qt::UserRole:{
             value = this->values->at(index.row()).getIcon();
+            break;
         }
-        break;
-
         default:
-            value = "";
+            break;
         }
 
     return value;

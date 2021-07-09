@@ -25,6 +25,8 @@ public:
     Ui::MainWindow *ui;
     TContext* context;
     static int getYear(QString photoPath);
+    void drawContext();
+    void deleteAllWidgets();
 
 private slots:
     void on_tabWidget_objectNameChanged(const QString &objectName);

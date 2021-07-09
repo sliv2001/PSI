@@ -39,7 +39,7 @@ public:
      * @param role is type of data to get.
      * @return if role is Qt::DisplayRole, it returns QString, if Qt::UserRole, then QIcon, and "" in case of error.
      */
-    QVariant data(const QModelIndex &index, int role) const;
+    QVariant data(const QModelIndex &index, int role) const override;
 
     /**
      * @brief populate replaces data with new one.

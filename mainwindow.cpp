@@ -54,6 +54,32 @@ int MainWindow::getYear(QString photoPath){
 
 }
 
+void MainWindow::drawContext()
+{
+    deleteAllWidgets();
+
+    for (int i = 0; i<context->tabCount(); i++){
+        QWidget* w = new QWidget();
+        ui->tabWidget->addTab(w, context->tabByIndex(i)->name);
+
+        QVBoxLayout* layout = new QVBoxLayout(w);
+        QTableView* table = new QTableView(w);
+        layout->addWidget(table);
+        table->setModel(context->tabByIndex(i));
+
+        table->show();
+    }
+    ui->tabWidget->setVisible(true);
+}
+
+void MainWindow::deleteAllWidgets()
+{
+    for (int i=ui->tabWidget->count()-1; i>=0; i--){
+        QWidget* w = ui->tabWidget->widget(i);
+        ui->tabWidget->removeTab(i);
+        delete w;
+    }
+}
 
 void MainWindow::on_tabWidget_objectNameChanged(const QString &objectName)
 {
@@ -76,6 +102,7 @@ void MainWindow::on_action_2_triggered()
         delete context;
         context = new TContext();
         context->init(strdir);
+        drawContext();
     }
 
 }

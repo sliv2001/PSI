@@ -26,20 +26,25 @@ void TContext::getFiles(QStringList* strs)
     }
 }
 
-void TContext::init(QString rootpath)
+void TContext::init(QString rpath)
 {
-    QDir dir(rootpath);
+    QDir dir(rpath);
 
-    QStringList listFiles = dir.entryList(QDir::Files);
+    QStringList listFiles = dir.entryList(filters, QDir::Files, QDir::NoSort);
     for (int i=0; i<listFiles.count(); i++)
-        listFiles[i]=rootpath+"/"+listFiles[i];
+        listFiles[i]=rpath+"/"+listFiles[i];
     getFiles(&listFiles);
 
     listFiles = dir.entryList(QDir::Dirs|QDir::NoDotAndDotDot);
     foreach (QString path, listFiles){
-        init(rootpath+"/"+path);
+        init(rpath+"/"+path);
     }
 
+}
+
+int TContext::tabCount()
+{
+    return tabs->count();
 }
 
 TTableViewModel* TContext::tab(QString name)
@@ -50,6 +55,11 @@ TTableViewModel* TContext::tab(QString name)
         }
     }
     return nullptr;
+}
+
+TTableViewModel* TContext::tabByIndex(int index)
+{
+    return (*tabs)[index];
 }
 
 TTableViewModel* TContext::newTable(QString name)
