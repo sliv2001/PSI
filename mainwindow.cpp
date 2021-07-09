@@ -23,7 +23,7 @@ int MainWindow::getYear(QString photoPath){
     }
     QString date;
     try {
-        Exiv2::Image::AutoPtr image;
+        Exiv2::Image::UniquePtr image;
         std::string s = photoPath.toStdString();
         image = Exiv2::ImageFactory::open(s, false);
         assert(image.get() != 0);

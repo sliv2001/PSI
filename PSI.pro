@@ -36,7 +36,10 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32: LIBS += -llibexiv2.dll
-
 DISTFILES += \
     TODO
+
+win32: LIBS += -L$$PWD/'../../../Program Files (x86)/exiv2/lib/' -llibexiv2.dll
+
+INCLUDEPATH += $$PWD/'../../../Program Files (x86)/exiv2/include'
+DEPENDPATH += $$PWD/'../../../Program Files (x86)/exiv2/include'

@@ -47,8 +47,8 @@ int TMediaFile::getYear()
     }
     QString date;
     try {
-        Exiv2::Image::AutoPtr image;
-        image = Exiv2::ImageFactory::open(this->fullPath.toStdString());
+        Exiv2::Image::UniquePtr image;
+        image = Exiv2::ImageFactory::open((const char*)this->fullPath.toLocal8Bit());
         assert(image.get() != 0);
         image->readMetadata();
         Exiv2::ExifData &data = image->exifData();
