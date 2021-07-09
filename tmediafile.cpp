@@ -56,8 +56,8 @@ int TMediaFile::getYear()
         date = QString::fromStdString(data["Exif.Photo.DateTimeOriginal"].toString());
         date = date.left(4);
     }  catch (Exiv2::AnyError &err) {
-        qWarning("Couldnot read metadata \"Exif.Photo.DateTimeOriginal\" from file %s.",
-                 this->fullPath.toStdString().c_str());
+        qWarning("Couldnot read metadata \"Exif.Photo.DateTimeOriginal\" from file %s. Error: %s",
+                 this->fullPath.toStdString().c_str(), err.what());
         return 0;
     }
 
