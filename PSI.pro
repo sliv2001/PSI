@@ -11,11 +11,13 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    test_mainwindow.cpp
+    test_mainwindow.cpp \
+    tmediafile.cpp
 
 HEADERS += \
     mainwindow.h \
-    test_mainwindow.h
+    test_mainwindow.h \
+    tmediafile.h
 
 FORMS += \
     mainwindow.ui

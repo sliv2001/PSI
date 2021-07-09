@@ -73,8 +73,7 @@ void MainWindow::on_action_2_triggered()
     QDir dir;
     if (dir.exists(strdir)){
         ui->tabWidget->setVisible(true);
-        //TODO добавить получение данных в таблицу:
-        //рекурсивное сканирование папки
+
     }
 
 }

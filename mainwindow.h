@@ -7,7 +7,7 @@
 #include <QFileSystemModel>
 #include "exiv2/exiv2.hpp"
 
-#define TESTING
+//#define TESTING
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
