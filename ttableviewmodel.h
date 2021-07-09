@@ -55,6 +55,31 @@ public:
     void append(TMediaFile file);
 
     /**
+     * @brief update changes particular row.
+     * @param idx is index of row changed.
+     * @param file is new value of row.
+     */
+    void update(int idx, TMediaFile file);
+
+    /**
+     * @brief deleteRow does what it was made for.
+     * @param idx is index to be deleted.
+     */
+    void deleteRow(int idx);
+
+    /**
+     * @brief insertAt adds a row with shift downwards.
+     * @param idx is an index for data to be placed at.
+     * @param file is value to be placed.
+     */
+    void insertAt(int idx, TMediaFile file);
+
+    /**
+     * @brief headerData serves for printing headers. It is overriding the same function in QAbstractModel (see F1 there).
+     */
+    QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
+
+    /**
      * @brief name is corresponding year or tab name.
      */
     QString name;

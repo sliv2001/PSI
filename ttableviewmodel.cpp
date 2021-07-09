@@ -81,5 +81,48 @@ void TTableViewModel::populate(QList<TMediaFile> *newValues)
 
 void TTableViewModel::append(TMediaFile file)
 {
-    this->values->append(file);
+    int newRow = this->values->count()+1;
+    beginInsertRows(QModelIndex(), newRow, newRow);
+    values->append(file);
+    endInsertRows();
+}
+
+void TTableViewModel::update(int idx, TMediaFile file)
+{
+    (*this->values)[idx] = file;
+
+    QModelIndex s = index(idx, 0);
+    QModelIndex e = index(idx, columnCount(QModelIndex()));
+    emit dataChanged(s, e);
+}
+
+void TTableViewModel::deleteRow(int idx)
+{
+    beginRemoveRows(QModelIndex(), idx, idx);
+    values->removeAt(idx);
+    endRemoveRows();
+}
+
+QVariant TTableViewModel::headerData(int section, Qt::Orientation orientation, int role) const
+{
+    if (role ==Qt::DisplayRole && orientation==Qt::Horizontal){
+        switch (section){
+        case 0:
+            return QString("Имя файла");
+        case 1:
+            return QString("Год съёмки");
+        case 2:
+            return QString("Теги");
+        case 3:
+            return QString("Уникальность");
+        case 4:
+            return QString("Качество");
+        case 5:
+            return QString("Полный путь к файлу");
+        }
+    }
+
+    if (role==Qt::DisplayRole)
+        return QVariant(section+1);
+    return QVariant();
 }

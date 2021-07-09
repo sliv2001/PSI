@@ -1,3 +1,4 @@
 TODO 1 TMediaFile::getLiveVideo(QString path): добавить конфиг файл с расширениями live
 TODO 2 MainWindow::on_action_2_triggered(): добавить диалог про сохранение изменений
 TODO 2 TContext::TContext(): проработать фильтры и конфиг файл
+TODO 1 : добавить popup меню
