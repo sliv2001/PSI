@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    context = new TContext();
     ui->tabWidget->setVisible(false);
 }
 
@@ -56,12 +57,12 @@ int MainWindow::getYear(QString photoPath){
 
 void MainWindow::on_tabWidget_objectNameChanged(const QString &objectName)
 {
-
+    Q_UNUSED(objectName);
 }
 
 void MainWindow::on_tabWidget_currentChanged(int index)
 {
-
+    Q_UNUSED(index);
 }
 
 

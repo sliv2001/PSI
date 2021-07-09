@@ -11,13 +11,17 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    tcontext.cpp \
     test_mainwindow.cpp \
-    tmediafile.cpp
+    tmediafile.cpp \
+    ttableviewmodel.cpp
 
 HEADERS += \
     mainwindow.h \
+    tcontext.h \
     test_mainwindow.h \
-    tmediafile.h
+    tmediafile.h \
+    ttableviewmodel.h
 
 FORMS += \
     mainwindow.ui
@@ -33,3 +37,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 win32: LIBS += -llibexiv2.dll
+
+DISTFILES += \
+    TODO

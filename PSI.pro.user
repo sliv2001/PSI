@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.14.2, 2021-07-09T01:04:39. -->
+<!-- Written by QtCreator 4.14.2, 2021-07-09T03:47:21. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -64,10 +64,7 @@
     <value type="bool" key="AutoTest.Framework.QtQuickTest">true</value>
     <value type="bool" key="AutoTest.Framework.QtTest">true</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="AutoTest.CheckStates">
-    <value type="Qt::CheckState" key="C:/msys64/home/PSI/test_mainwindow.cpp:test_getYear">Checked</value>
-    <value type="Qt::CheckState" key="C:/msys64/home/PSI/test_mainwindow.h:Test_mainwindow">Checked</value>
-   </valuemap>
+   <valuemap type="QVariantMap" key="AutoTest.CheckStates"/>
    <value type="int" key="AutoTest.RunAfterBuild">0</value>
    <value type="bool" key="AutoTest.UseGlobal">true</value>
    <valuelist type="QVariantList" key="ClangCodeModel.CustomCommandLineKey">

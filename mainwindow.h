@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include <QFileSystemModel>
 #include "exiv2/exiv2.hpp"
+#include "tcontext.h"
 
 //#define TESTING
 
@@ -22,6 +23,7 @@ public:
     ~MainWindow();
 
     Ui::MainWindow *ui;
+    TContext* context;
     static int getYear(QString photoPath);
 
 private slots:
