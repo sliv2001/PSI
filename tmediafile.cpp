@@ -3,6 +3,8 @@
 void TMediaFile::getLiveVideo(QString path)
 {
     //TODO добавить конфиг файл с расширениями live
+    if (QFileInfo(path).suffix()=="MOV"||QFileInfo(path).suffix()=="mov")
+        this->live_path="";
     QFileInfo fi = QFileInfo(path);
     QFileInfo fo(fi.completeBaseName()+".MOV");
     if (fo.exists()){
@@ -19,12 +21,21 @@ void TMediaFile::getLiveVideo(QString path)
 
 TMediaFile::TMediaFile(QString path)
 {
+    QFileInfo f(path);
+    if (!f.isFile())
+        qWarning("Path %s is not to a file!", path.toStdString().c_str());
+
     this->fullPath=path;
     this->quality=0;
     this->tags="";
     this->unique=1.0;
     this->year=this->getYear();
     getLiveVideo(path);
+}
+
+QIcon TMediaFile::getIcon() const
+{
+    return QIcon();
 }
 
 int TMediaFile::getYear()
