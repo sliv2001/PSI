@@ -73,8 +73,9 @@ void MainWindow::on_action_2_triggered()
 
     QDir dir;
     if (dir.exists(strdir)){
-        ui->tabWidget->setVisible(true);
-
+        delete context;
+        context = new TContext();
+        context->init(strdir);
     }
 
 }

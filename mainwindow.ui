@@ -73,6 +73,7 @@
     </property>
     <addaction name="action"/>
     <addaction name="action_2"/>
+    <addaction name="action_4"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
@@ -109,6 +110,11 @@
   <action name="action_3">
    <property name="text">
     <string>Выбрать папку</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>Добавить медиа из папки</string>
    </property>
   </action>
  </widget>

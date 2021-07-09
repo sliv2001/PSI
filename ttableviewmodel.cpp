@@ -1,9 +1,10 @@
 #include "ttableviewmodel.h"
 
-TTableViewModel::TTableViewModel(QObject *parent)
+TTableViewModel::TTableViewModel(QString Name, QObject *parent)
 {
     Q_UNUSED(parent);
     values = new QList<TMediaFile>();
+    this->name = Name;
 }
 
 TTableViewModel::~TTableViewModel()
@@ -72,4 +73,9 @@ void TTableViewModel::populate(QList<TMediaFile> *newValues)
     this->beginInsertRows(QModelIndex(), 1, idx);
     this->values = newValues;
     endInsertRows();
+}
+
+void TTableViewModel::append(TMediaFile file)
+{
+    this->values->append(file);
 }

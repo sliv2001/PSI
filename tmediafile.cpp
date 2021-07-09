@@ -21,11 +21,12 @@ void TMediaFile::getLiveVideo(QString path)
 
 TMediaFile::TMediaFile(QString path)
 {
-    QFileInfo f(path);
+    QString p = path;
+    QFileInfo f(p);
     if (!f.isFile())
         qWarning("Path %s is not to a file!", path.toStdString().c_str());
 
-    this->fullPath=path;
+    this->fullPath=p;
     this->quality=0;
     this->tags="";
     this->unique=1.0;
@@ -47,8 +48,7 @@ int TMediaFile::getYear()
     QString date;
     try {
         Exiv2::Image::AutoPtr image;
-        std::string s = this->fullPath.toStdString();
-        image = Exiv2::ImageFactory::open(s, false);
+        image = Exiv2::ImageFactory::open(this->fullPath.toStdString());
         assert(image.get() != 0);
         image->readMetadata();
         Exiv2::ExifData &data = image->exifData();

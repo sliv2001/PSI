@@ -16,7 +16,7 @@ public:
      * @brief TTableViewModel creates main class for program to work with.
      * @param parent is just a parent of an object.
      */
-    TTableViewModel(QObject *parent = nullptr);
+    TTableViewModel(QString Name, QObject *parent = nullptr);
 
     ~TTableViewModel();
 
@@ -47,6 +47,17 @@ public:
      * @warning You had better use it only when initializing new model cause i don't know how exactly it works.
      */
     void populate(QList<TMediaFile> *newValues);
+
+    /**
+     * @brief append adds new file to values.
+     * @param file is new file to be added.
+     */
+    void append(TMediaFile file);
+
+    /**
+     * @brief name is corresponding year or tab name.
+     */
+    QString name;
 
 private:
     /**
