@@ -5,6 +5,8 @@
 #include <QFileInfo>
 #include <QPainter>
 #include <QPicture>
+#include <math.h>
+#include "exiv2/exiv2.hpp"
 
 class TTableDelegate : public QItemDelegate
 {

@@ -7,7 +7,19 @@ TTableDelegate::TTableDelegate()
 
 QSize TTableDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    return QItemDelegate::sizeHint(option, index);
+    QSize s(100, 100);
+    QString path = index.model()->data(index, Qt::DisplayRole).toString();
+    int w, h;
+    if (index.column()==0){
+        w=QPixmap(path).width();
+        h=ceil(QPixmap(path).height()/w*100);
+        s.setHeight(h);
+    }
+    else{
+        s = QItemDelegate::sizeHint(option, index);
+    }
+
+    return s;
 }
 
 void TTableDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const

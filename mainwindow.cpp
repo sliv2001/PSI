@@ -69,6 +69,8 @@ void MainWindow::drawContext()
         table->setModel(context->tabByIndex(i));
         table->setItemDelegate(delegate);
         table->show();
+        table->resizeColumnsToContents();
+        table->resizeRowsToContents();
     }
     ui->tabWidget->setVisible(true);
 }
