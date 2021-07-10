@@ -26,7 +26,7 @@ public:
 
     QIcon getIcon() const;
 
-    QSize getSize() const;
+    QSize getResolution() const;
 
     /**
      * @brief fullPath is obviously absolute path to current file.
@@ -71,6 +71,7 @@ private:
      * @param path is string representing abs or rel path to file
      */
     void getLiveVideo(QString path);
+    QSize resolution;
 };
 
 #endif // TMEDIAFILE_H

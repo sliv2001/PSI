@@ -10,7 +10,7 @@ QSize TTableDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelI
     QSize s(100, 100);
     if (index.column()==0){
         QString str = index.model()->data(index, Qt::DisplayRole).toString();
-        s = ((TTableViewModel*)index.model())->value(index.row()).getSize();
+        s = ((TTableViewModel*)index.model())->value(index.row()).getResolution();
         if (s.width()>0&&s.height()>0){
             s.setHeight(round((float)s.height()/(float)s.width()*100));
             s.setWidth(100);
@@ -33,7 +33,7 @@ void TTableDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option
         QString StrIcon = index.model()->data(index, Qt::DisplayRole).toString();
         if (QFileInfo(StrIcon).exists()){
             QPixmap icon(StrIcon);
-            QSize s=((TTableViewModel*)index.model())->value(index.row()).getSize();
+            QSize s=((TTableViewModel*)index.model())->value(index.row()).getResolution();
             painter->drawPixmap(myOption.rect.x(), myOption.rect.y(), 100, round((float)s.height()/(float)s.width()*100), icon);
         }
         else{

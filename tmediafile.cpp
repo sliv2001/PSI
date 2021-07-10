@@ -32,6 +32,8 @@ TMediaFile::TMediaFile(QString path)
     this->unique=1.0;
     this->year=this->getYear();
     getLiveVideo(path);
+    resolution=QSize(0, 0);
+    resolution=getResolution();
 }
 
 QIcon TMediaFile::getIcon() const
@@ -39,21 +41,26 @@ QIcon TMediaFile::getIcon() const
     return QIcon();
 }
 
-QSize TMediaFile::getSize() const
+QSize TMediaFile::getResolution() const
 {
-    int w, h;
     QSize s(0, 0);
-    Exiv2::Image::UniquePtr img = Exiv2::ImageFactory::open((const char*)fullPath.toLocal8Bit());
-    assert(img.get()!=0);
-    img->readMetadata();
+    if (resolution.width()==0||resolution.height()==0){
+        int w, h;
 
-    w=img->pixelWidth();
-    h=img->pixelHeight();
-    if (w>0&&h>0){
-        s.setHeight(h);
-        s.setWidth(w);
+        Exiv2::Image::UniquePtr img = Exiv2::ImageFactory::open((const char*)fullPath.toLocal8Bit());
+        assert(img.get()!=0);
+        img->readMetadata();
+
+        w=img->pixelWidth();
+        h=img->pixelHeight();
+        if (w>0&&h>0){
+            s.setHeight(h);
+            s.setWidth(w);
+        }
     }
-
+    else{
+        return this->resolution;
+    }
 
     return s;
 }
