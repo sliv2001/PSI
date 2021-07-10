@@ -1,4 +1,4 @@
-ver. 0.1
+ver. 0.2-dev
 TODO 1 TMediaFile::getLiveVideo(QString path): добавить конфиг файл с расширениями live
 TODO 2 MainWindow::on_action_2_triggered(): добавить диалог про сохранение изменений
 TODO 2 TContext::TContext(): проработать фильтры и конфиг файл
@@ -6,4 +6,4 @@ TODO 1 : добавить popup меню
 TODO 2 : изменение размера применить для всех окон
 TODO 2 : перенести метод TMediaFile::getIcon
 TODO 1 : исправить проблему быстродействия в методе paint
-TODO 2 : добавить поток для сканирования папки
+TODO 2 : добавить шкалу прогресса

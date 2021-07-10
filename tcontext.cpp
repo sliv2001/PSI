@@ -4,11 +4,14 @@ TContext::TContext()
 {
     filters<<"*.jpg"<<"*.png";
     tabs = new QList<TTableViewModel*>();
+    watcher = nullptr;
 }
 
 TContext::~TContext()
 {
     delete tabs;
+    if (watcher!=nullptr)
+        delete watcher;
 }
 
 void TContext::getFiles(QStringList* strs)

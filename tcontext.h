@@ -36,6 +36,7 @@ public:
     TTableViewModel* tabByIndex(int index);
     TTableViewModel* newTable(QString name);
     void getFiles(QStringList* str);
+    QFutureWatcher<void>* watcher;
 
 private:
     QList<TTableViewModel*> *tabs;

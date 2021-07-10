@@ -86,12 +86,14 @@ void MainWindow::deleteAllWidgets()
 
 void MainWindow::startScanningFilesystem()
 {
-    ui->menu->setEnabled(false);
+    ui->centralwidget->setEnabled(false);
+    ui->menubar->setEnabled(false);
 }
 
 void MainWindow::finishScanningFilesystem()
 {
-    ui->menu->setEnabled(true);
+    ui->centralwidget->setEnabled(true);
+    ui->menubar->setEnabled(true);
     drawContext();
 }
 
@@ -113,13 +115,14 @@ void MainWindow::on_action_2_triggered()
 
     QDir dir;
     if (dir.exists(strdir)){
+        startScanningFilesystem();
         delete context;
         context = new TContext();
-        QFutureWatcher<void>* watcher = new QFutureWatcher<void>();
-        connect(watcher, &QFutureWatcher<void>::finished, this, &MainWindow::finishScanningFilesystem);
+        context->watcher = new QFutureWatcher<void>();
+        connect(context->watcher, &QFutureWatcher<void>::finished, this, &MainWindow::finishScanningFilesystem);
 
         QFuture<void> future = context->init(strdir);
-        watcher->setFuture(future);
+        context->watcher->setFuture(future);
 
     }
 
