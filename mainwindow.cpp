@@ -64,9 +64,10 @@ void MainWindow::drawContext()
 
         QVBoxLayout* layout = new QVBoxLayout(w);
         QTableView* table = new QTableView(w);
+        TTableDelegate* delegate = new TTableDelegate();
         layout->addWidget(table);
         table->setModel(context->tabByIndex(i));
-
+        table->setItemDelegate(delegate);
         table->show();
     }
     ui->tabWidget->setVisible(true);

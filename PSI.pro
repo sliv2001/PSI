@@ -14,6 +14,7 @@ SOURCES += \
     tcontext.cpp \
     test_mainwindow.cpp \
     tmediafile.cpp \
+    ttabledelegate.cpp \
     ttableviewmodel.cpp
 
 HEADERS += \
@@ -21,6 +22,7 @@ HEADERS += \
     tcontext.h \
     test_mainwindow.h \
     tmediafile.h \
+    ttabledelegate.h \
     ttableviewmodel.h
 
 FORMS += \

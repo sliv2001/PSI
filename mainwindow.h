@@ -7,6 +7,7 @@
 #include <QFileSystemModel>
 #include "exiv2/exiv2.hpp"
 #include "tcontext.h"
+#include "ttabledelegate.h"
 
 //#define TESTING
 
