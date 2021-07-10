@@ -12,7 +12,7 @@ QSize TTableDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelI
         QString str = index.model()->data(index, Qt::DisplayRole).toString();
         s = ((TTableViewModel*)index.model())->value(index.row()).getSize();
         if (s.width()>0&&s.height()>0){
-            s.setHeight(ceil(s.height()/s.width()*100));
+            s.setHeight(round((float)s.height()/(float)s.width()*100));
             s.setWidth(100);
         }
         return s;
@@ -33,7 +33,8 @@ void TTableDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option
         QString StrIcon = index.model()->data(index, Qt::DisplayRole).toString();
         if (QFileInfo(StrIcon).exists()){
             QPixmap icon(StrIcon);
-            painter->drawPixmap(myOption.rect.x(), myOption.rect.y(), 64, 64, icon);
+            QSize s=((TTableViewModel*)index.model())->value(index.row()).getSize();
+            painter->drawPixmap(myOption.rect.x(), myOption.rect.y(), 100, round((float)s.height()/(float)s.width()*100), icon);
         }
         else{
             qWarning("File %s doesnot exist.", (const char*)StrIcon.toLocal8Bit());
