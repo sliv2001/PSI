@@ -3,6 +3,8 @@
 
 #include <QList>
 #include <QDir>
+#include <QtConcurrent>
+
 #include "ttableviewmodel.h"
 #include "tmediafile.h"
 
@@ -28,7 +30,7 @@ public:
      */
     QStringList filters;
 
-    void init(QString rootpath);
+    QFuture<void> init(QString rootpath);
     int tabCount();
     TTableViewModel* tab(QString name);
     TTableViewModel* tabByIndex(int index);
@@ -37,6 +39,7 @@ public:
 
 private:
     QList<TTableViewModel*> *tabs;
+    void recursiveInit(QString rpath);
 };
 
 #endif // TCONTEXT_H

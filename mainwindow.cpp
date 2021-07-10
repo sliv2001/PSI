@@ -84,6 +84,17 @@ void MainWindow::deleteAllWidgets()
     }
 }
 
+void MainWindow::startScanningFilesystem()
+{
+    ui->menu->setEnabled(false);
+}
+
+void MainWindow::finishScanningFilesystem()
+{
+    ui->menu->setEnabled(true);
+    drawContext();
+}
+
 void MainWindow::on_tabWidget_objectNameChanged(const QString &objectName)
 {
     Q_UNUSED(objectName);
@@ -104,8 +115,12 @@ void MainWindow::on_action_2_triggered()
     if (dir.exists(strdir)){
         delete context;
         context = new TContext();
-        context->init(strdir);
-        drawContext();
+        QFutureWatcher<void>* watcher = new QFutureWatcher<void>();
+        connect(watcher, &QFutureWatcher<void>::finished, this, &MainWindow::finishScanningFilesystem);
+
+        QFuture<void> future = context->init(strdir);
+        watcher->setFuture(future);
+
     }
 
 }

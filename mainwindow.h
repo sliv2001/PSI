@@ -30,6 +30,12 @@ public:
     void deleteAllWidgets();
 
 private slots:
+    void startScanningFilesystem();
+
+    void finishScanningFilesystem();
+
+    //void progressScanningFilesystem(float progress);
+
     void on_tabWidget_objectNameChanged(const QString &objectName);
 
     void on_tabWidget_currentChanged(int index);

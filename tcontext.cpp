@@ -26,7 +26,7 @@ void TContext::getFiles(QStringList* strs)
     }
 }
 
-void TContext::init(QString rpath)
+void TContext::recursiveInit(QString rpath)
 {
     QDir dir(rpath);
 
@@ -37,9 +37,15 @@ void TContext::init(QString rpath)
 
     listFiles = dir.entryList(QDir::Dirs|QDir::NoDotAndDotDot);
     foreach (QString path, listFiles){
-        init(rpath+"/"+path);
+        recursiveInit(rpath+"/"+path);
     }
 
+}
+
+QFuture<void> TContext::init(QString rpath)
+{
+    //recursiveInit(rpath);
+    return QtConcurrent::run(this, &TContext::recursiveInit, rpath);
 }
 
 int TContext::tabCount()
