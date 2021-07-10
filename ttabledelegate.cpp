@@ -7,19 +7,27 @@ TTableDelegate::TTableDelegate()
 
 QSize TTableDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    QSize s(100, 100);
-    QString path = index.model()->data(index, Qt::DisplayRole).toString();
+    QSize s(200, 200);
     int w, h;
     if (index.column()==0){
-        w=QPixmap(path).width();
-        h=ceil(QPixmap(path).height()/w*100);
-        s.setHeight(h);
-    }
-    else{
-        s = QItemDelegate::sizeHint(option, index);
+        QString str = index.model()->data(index, Qt::DisplayRole).toString();
+        Exiv2::Image::UniquePtr img = Exiv2::ImageFactory::open((const char*)str.toLocal8Bit());
+        assert(img.get()!=0);
+        img->readMetadata();
+
+        Exiv2::ExifData &exif = img->exifData();
+        if (!exif.empty()){
+            w=img->pixelWidth();
+            h=img->pixelHeight();
+            if (w>0&&h>0){
+                s.setHeight(ceil(h*200/w));
+                return s;
+            }
+
+        }
     }
 
-    return s;
+    return QItemDelegate::sizeHint(option, index);
 }
 
 void TTableDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
