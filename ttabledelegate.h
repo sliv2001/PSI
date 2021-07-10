@@ -7,7 +7,7 @@
 #include <QPicture>
 #include <math.h>
 #include "exiv2/exiv2.hpp"
-
+#include "ttableviewmodel.h"
 class TTableDelegate : public QItemDelegate
 {
 public:

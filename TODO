@@ -3,3 +3,5 @@ TODO 2 MainWindow::on_action_2_triggered(): добавить диалог про
 TODO 2 TContext::TContext(): проработать фильтры и конфиг файл
 TODO 1 : добавить popup меню
 TODO 2 : изменение размера применить для всех окон
+TODO 2 : перенести метод TMediaFile::getIcon
+TODO 2 : перенести метод getSize

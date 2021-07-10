@@ -84,6 +84,7 @@ public:
      */
     QString name;
 
+    TMediaFile value(int index);
 private:
     /**
      * @brief values are values of the table.

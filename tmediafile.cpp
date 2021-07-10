@@ -39,6 +39,25 @@ QIcon TMediaFile::getIcon() const
     return QIcon();
 }
 
+QSize TMediaFile::getSize() const
+{
+    int w, h;
+    QSize s(0, 0);
+    Exiv2::Image::UniquePtr img = Exiv2::ImageFactory::open((const char*)fullPath.toLocal8Bit());
+    assert(img.get()!=0);
+    img->readMetadata();
+
+    w=img->pixelWidth();
+    h=img->pixelHeight();
+    if (w>0&&h>0){
+        s.setHeight(h);
+        s.setWidth(w);
+    }
+
+
+    return s;
+}
+
 int TMediaFile::getYear()
 {
     if (!QFile(this->fullPath).exists()){

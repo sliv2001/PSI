@@ -148,3 +148,8 @@ QVariant TTableViewModel::headerData(int section, Qt::Orientation orientation, i
         return QVariant(section+1);
     return QVariant();
 }
+
+TMediaFile TTableViewModel::value(int index)
+{
+    return values->at(index);
+}

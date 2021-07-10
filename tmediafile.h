@@ -5,6 +5,7 @@
 #include <QFileInfo>
 #include <QIcon>
 #include <exiv2/exiv2.hpp>
+#include <math.h>
 
 /**
  * @brief The TMediaFile class is primitive class which contains methods to analyse and edit files.
@@ -24,6 +25,8 @@ public:
     TMediaFile(QString path);
 
     QIcon getIcon() const;
+
+    QSize getSize() const;
 
     /**
      * @brief fullPath is obviously absolute path to current file.
