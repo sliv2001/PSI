@@ -5,7 +5,10 @@
 #include <QTableWidget>
 #include <QFileDialog>
 #include <QFileSystemModel>
+#include <QProgressBar>
+
 #include "exiv2/exiv2.hpp"
+
 #include "tcontext.h"
 #include "ttabledelegate.h"
 
@@ -25,6 +28,8 @@ public:
 
     Ui::MainWindow *ui;
     TContext* context;
+    QProgressBar* bar;
+
     static int getYear(QString photoPath);
     void drawContext();
     void deleteAllWidgets();
@@ -34,7 +39,9 @@ private slots:
 
     void finishScanningFilesystem();
 
-    //void progressScanningFilesystem(float progress);
+    void progressScanningFilesystem(int progress);
+
+    void setupBar(int min, int max);
 
     void on_tabWidget_objectNameChanged(const QString &objectName);
 

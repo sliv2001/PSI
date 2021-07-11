@@ -9,6 +9,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     context = new TContext();
     ui->tabWidget->setVisible(false);
+
+    bar = new QProgressBar(this->statusBar());
+    this->statusBar()->addWidget(bar);
+    bar->setVisible(false);
+    bar->setTextVisible(true);
+    bar->setFormat("Выполнено %p%; %v / %m");
 }
 
 MainWindow::~MainWindow()
@@ -42,12 +48,12 @@ int MainWindow::getYear(QString photoPath){
     int year = date.toInt(&ok);
     if (!ok){
 #ifndef TESTING
-        qWarning("Couldnot get year of photo %s", photoPath.toStdString().c_str());
+        qWarning("Couldnot get year of photo %s", (const char*)photoPath.toLocal8Bit());
 #endif
         return 0;
     }
     if (year<1500||year>2500){
-        qWarning("Year of photo %s is out of range", photoPath.toStdString().c_str());
+        qWarning("Year of photo %s is out of range", (const char*)photoPath.toLocal8Bit());
         return 0;
     }
     return year;
@@ -88,13 +94,27 @@ void MainWindow::startScanningFilesystem()
 {
     ui->centralwidget->setEnabled(false);
     ui->menubar->setEnabled(false);
+    this->bar->setVisible(true);
 }
 
 void MainWindow::finishScanningFilesystem()
 {
     ui->centralwidget->setEnabled(true);
     ui->menubar->setEnabled(true);
+    this->bar->setVisible(false);
     drawContext();
+}
+
+void MainWindow::progressScanningFilesystem(int progress)
+{
+    this->bar->setValue(progress);
+
+}
+
+void MainWindow::setupBar(int min, int max)
+{
+    this->bar->setMinimum(min);
+    this->bar->setMaximum(max);
 }
 
 void MainWindow::on_tabWidget_objectNameChanged(const QString &objectName)
@@ -120,10 +140,12 @@ void MainWindow::on_action_2_triggered()
         context = new TContext();
         context->watcher = new QFutureWatcher<void>();
         connect(context->watcher, &QFutureWatcher<void>::finished, this, &MainWindow::finishScanningFilesystem);
-
+        connect(context->watcher, &QFutureWatcher<void>::progressValueChanged, this, &MainWindow::progressScanningFilesystem);
+        connect(context->watcher, &QFutureWatcher<void>::progressRangeChanged, this, &MainWindow::setupBar);
         QFuture<void> future = context->init(strdir);
         context->watcher->setFuture(future);
-
+        this->bar->setMaximum(future.progressMaximum());
+        this->bar->setMinimum(0);
     }
 
 }

@@ -27,6 +27,7 @@ void TContext::getFiles(QPromise<void>* promise, int* value, QStringList* strs)
             t->append(file);
         }
         if (promise!=nullptr&&value!=nullptr){
+            promise->suspendIfRequested();
             *value+=1;
             promise->setProgressValue(*value);
         }
