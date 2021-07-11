@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    tclient.cpp \
     tcontext.cpp \
     test_mainwindow.cpp \
     tmediafile.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     mainwindow.h \
+    tclient.h \
     tcontext.h \
     test_mainwindow.h \
     tmediafile.h \
@@ -41,7 +43,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     TODO
 
-win32: LIBS += -L$$PWD/'../../../Program Files (x86)/exiv2/lib/' -llibexiv2.dll
+win32: LIBS += -L$$PWD/'../../../../Program Files (x86)/exiv2/lib/' -llibexiv2.dll
 
-INCLUDEPATH += $$PWD/'../../../Program Files (x86)/exiv2/include'
-DEPENDPATH += $$PWD/'../../../Program Files (x86)/exiv2/include'
+INCLUDEPATH += $$PWD/'../../../../Program Files (x86)/exiv2/include'
+DEPENDPATH += $$PWD/'../../../../Program Files (x86)/exiv2/include'

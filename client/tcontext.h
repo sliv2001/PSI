@@ -7,6 +7,7 @@
 
 #include "ttableviewmodel.h"
 #include "tmediafile.h"
+#include "tclient.h"
 
 /**
  * @brief The TContext class is main class for application to work with. It represents structure of main window and contains models.
@@ -28,7 +29,7 @@ public:
     /**
      * @brief filters are list of strings imported from config, which represent image files.
      */
-    QStringList filters;
+    QStringList imageFilters;
 
     QFuture<void> init(QString rootpath);
     int tabCount();
@@ -40,8 +41,11 @@ public:
 
     int getImageCount(QString rpath);
 
+    bool isImage(TMediaFile* f);
+
 private:
     QList<TTableViewModel*> *tabs;
+    TClient* client;
     void recursiveInit(QPromise<void>* promise, int* value, QString rpath);
     void startRecursiveInit(QPromise<void> &promise, QString rpath);
 };

@@ -2,9 +2,10 @@
 
 TContext::TContext()
 {
-    filters<<"*.jpg"<<"*.png";
+    imageFilters<<"*.jpg"<<"*.png";
     tabs = new QList<TTableViewModel*>();
     watcher = nullptr;
+    client = new TClient();
 }
 
 TContext::~TContext()
@@ -12,6 +13,7 @@ TContext::~TContext()
     delete tabs;
     if (watcher!=nullptr)
         delete watcher;
+    delete client;
 }
 
 void TContext::getFiles(QPromise<void>* promise, int* value, QStringList* strs)
@@ -39,7 +41,7 @@ int TContext::getImageCount(QString rpath)
     int result;
     QDir dir(rpath);
     dir.setFilter(QDir::Files);
-    dir.setNameFilters(this->filters);
+    dir.setNameFilters(this->imageFilters);
     result=dir.count();
 
     dir.setFilter(QDir::NoFilter);
@@ -53,11 +55,21 @@ int TContext::getImageCount(QString rpath)
     return result;
 }
 
+bool TContext::isImage(TMediaFile *f)
+{
+    QString suffix = QFileInfo(f->fullPath).suffix();
+    foreach(QString str, imageFilters){
+        if (str.contains(suffix, Qt::CaseInsensitive))
+            return 1;
+    }
+    return 0;
+}
+
 void TContext::recursiveInit(QPromise<void>* promise, int* value, QString rpath)
 {
     QDir dir(rpath);
 
-    QStringList listFiles = dir.entryList(filters, QDir::Files, QDir::NoSort);
+    QStringList listFiles = dir.entryList(imageFilters, QDir::Files, QDir::NoSort);
     for (int i=0; i<listFiles.count(); i++)
         listFiles[i]=rpath+"/"+listFiles[i];
     getFiles(promise, value, &listFiles);
