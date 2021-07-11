@@ -20,9 +20,13 @@ void TClient::sendFile(QString path)
     QFile f = QFile(path);
     if (f.open(QIODevice::ReadOnly)){
         uint64_t size = f.size();
-        socket->write((char*)&size, 8);
+        int32_t pathSize = path.length();
+        socket->write((char*)&pathSize, 4);                 //Send length of path
+        socket->write(path.toLocal8Bit(), path.length());   //Send path
+        socket->write((char*)&size, 8);                     //Send length of file
+
         auto data = f.readAll();
-        socket->write(data);
+        socket->write(data);                                //Send file
     }
     f.close();
 }

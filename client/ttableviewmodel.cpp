@@ -44,6 +44,8 @@ QVariant TTableViewModel::data(const QModelIndex &index, int role) const
             }
             case 3:{
                 value = this->values->at(index.row()).tags; //tags
+                if (value.toString()=="")
+                    value = "Scan pending";
                 break;
             }
             case 4:{

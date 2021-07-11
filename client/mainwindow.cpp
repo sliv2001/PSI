@@ -104,6 +104,7 @@ void MainWindow::finishScanningFilesystem()
     ui->menubar->setEnabled(true);
     this->bar->setVisible(false);
     drawContext();
+    context->recognize();
 }
 
 void MainWindow::progressScanningFilesystem(int progress)
@@ -139,12 +140,12 @@ void MainWindow::on_action_2_triggered()
         startScanningFilesystem();
         delete context;
         context = new TContext();
-        context->watcher = new QFutureWatcher<void>();
-        connect(context->watcher, &QFutureWatcher<void>::finished, this, &MainWindow::finishScanningFilesystem);
-        connect(context->watcher, &QFutureWatcher<void>::progressValueChanged, this, &MainWindow::progressScanningFilesystem);
-        connect(context->watcher, &QFutureWatcher<void>::progressRangeChanged, this, &MainWindow::setupBar);
+        context->fileSystemScanWatcher = new QFutureWatcher<void>();
+        connect(context->fileSystemScanWatcher, &QFutureWatcher<void>::finished, this, &MainWindow::finishScanningFilesystem);
+        connect(context->fileSystemScanWatcher, &QFutureWatcher<void>::progressValueChanged, this, &MainWindow::progressScanningFilesystem);
+        connect(context->fileSystemScanWatcher, &QFutureWatcher<void>::progressRangeChanged, this, &MainWindow::setupBar);
         QFuture<void> future = context->init(strdir);
-        context->watcher->setFuture(future);
+        context->fileSystemScanWatcher->setFuture(future);
         this->bar->setMaximum(future.progressMaximum());
         this->bar->setMinimum(0);
     }

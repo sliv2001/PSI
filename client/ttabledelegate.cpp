@@ -45,4 +45,5 @@ void TTableDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option
     }
 
     drawFocus(painter, myOption, myOption.rect);
+
 }

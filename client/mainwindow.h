@@ -31,10 +31,12 @@ public:
     QProgressBar* bar;
 
     static int getYear(QString photoPath);
-    void drawContext();
     void deleteAllWidgets();
 
 private slots:
+
+    void drawContext();
+
     void startScanningFilesystem();
 
     void finishScanningFilesystem();

@@ -38,17 +38,21 @@ public:
     TTableViewModel* tabByIndex(int index);
     TTableViewModel* newTable(QString name);
     void getFiles(QPromise<void>* promise, int* value, QStringList* str);
-    QFutureWatcher<void>* watcher;
-
+    QFutureWatcher<void>* fileSystemScanWatcher;
+    QFutureWatcher<void>* recognizeWatcher;
     int getImageCount(QString rpath);
 
     bool isImage(TMediaFile* f);
+
+    void recognize();
 
 private:
     QList<TTableViewModel*> *tabs;
     TClient* client;
     void recursiveInit(QPromise<void>* promise, int* value, QString rpath);
     void startRecursiveInit(QPromise<void> &promise, QString rpath);
+    void recognizeWorker(QPromise<void> &promise);
+
 };
 
 #endif // TCONTEXT_H

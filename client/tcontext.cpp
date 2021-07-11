@@ -5,15 +5,18 @@ TContext::TContext(QObject *parent)
     Q_UNUSED(parent);
     imageFilters<<"*.jpg"<<"*.png";
     tabs = new QList<TTableViewModel*>();
-    watcher = nullptr;
+    fileSystemScanWatcher = nullptr;
+    recognizeWatcher = new QFutureWatcher<void>(this);
     client = new TClient();
 }
 
 TContext::~TContext()
 {
+    recognizeWatcher->future().cancel();
+    recognizeWatcher->future().waitForFinished();
     delete tabs;
-    if (watcher!=nullptr)
-        delete watcher;
+    if (fileSystemScanWatcher!=nullptr)
+        delete fileSystemScanWatcher;
     delete client;
 }
 
@@ -64,6 +67,30 @@ bool TContext::isImage(TMediaFile *f)
             return 1;
     }
     return 0;
+}
+
+void TContext::recognize()
+{
+    QFuture future = QtConcurrent::run(&TContext::recognizeWorker, this);
+    recognizeWatcher->setFuture(future);
+
+}
+
+void TContext::recognizeWorker(QPromise<void> &promise)
+{
+    Q_UNUSED(promise);
+    foreach(TTableViewModel* model, *(this->tabs)){
+        for (int i=0; i<model->rowCount(QModelIndex()); i++){
+            if (model->value(i).tags==""){
+                this->client->sendFile(model->value(i).fullPath);
+                TMediaFile f=model->value(i);
+                f.tags = "In Progress";
+                model->update(i, f);
+                if (promise.isCanceled())
+                    return;
+            }
+        }
+    }
 }
 
 void TContext::recursiveInit(QPromise<void>* promise, int* value, QString rpath)
