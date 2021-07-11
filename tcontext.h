@@ -35,12 +35,15 @@ public:
     TTableViewModel* tab(QString name);
     TTableViewModel* tabByIndex(int index);
     TTableViewModel* newTable(QString name);
-    void getFiles(QStringList* str);
+    void getFiles(QPromise<void>* promise, int* value, QStringList* str);
     QFutureWatcher<void>* watcher;
+
+    int getImageCount(QString rpath);
 
 private:
     QList<TTableViewModel*> *tabs;
-    void recursiveInit(QString rpath);
+    void recursiveInit(QPromise<void>* promise, int* value, QString rpath);
+    void startRecursiveInit(QPromise<void> &promise, QString rpath);
 };
 
 #endif // TCONTEXT_H
