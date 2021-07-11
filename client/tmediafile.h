@@ -52,7 +52,7 @@ public:
      * @brief tags is QString which contains metatags this way: "tag1;tag2;tag3;" or
      * "NOTAG" if nothing was found, or "" if didn't search yet.
      */
-    QString tags;
+    QString tags="";
 
     /**
      * @brief live_path contains path to live-video in iPhone-style data.
@@ -64,7 +64,7 @@ private:
      * @brief getYear uses Exiv2 to read DateTimeOriginal metadatum from current file.
      * @return year if it's written, 0 if not, -1 if error.
      */
-    int getYear();
+    int getYear_setTags();
 
     /**
      * @brief getLiveVideo searches for live-video in the same directory but a different suffix.

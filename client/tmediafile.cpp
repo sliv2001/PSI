@@ -30,7 +30,7 @@ TMediaFile::TMediaFile(QString path)
     this->quality=0;
     this->tags="";
     this->unique=1.0;
-    this->year=this->getYear();
+    this->year=this->getYear_setTags();
     getLiveVideo(path);
     resolution=QSize(0, 0);
     resolution=getResolution();
@@ -65,7 +65,7 @@ QSize TMediaFile::getResolution() const
     return s;
 }
 
-int TMediaFile::getYear()
+int TMediaFile::getYear_setTags()
 {
     if (!QFile(this->fullPath).exists()){
         qWarning("File %s does not exist", this->fullPath.toStdString().c_str());
@@ -78,6 +78,12 @@ int TMediaFile::getYear()
         assert(image.get() != 0);
         image->readMetadata();
         Exiv2::ExifData &data = image->exifData();
+
+        if (data["Exif.Image.XPKeywords"].size()>0){
+            char s[4096];
+            data["Exif.Image.XPKeywords"].copy((Exiv2::byte*)&s, Exiv2::ByteOrder::littleEndian);
+            tags=QString::fromUtf16((const char16_t*)&s);
+        }
 
         date = QString::fromStdString(data["Exif.Photo.DateTimeOriginal"].toString());
         date = date.left(4);

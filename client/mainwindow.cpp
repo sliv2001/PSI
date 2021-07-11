@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->statusBar()->addWidget(bar);
     bar->setVisible(false);
     bar->setTextVisible(true);
-    bar->setFormat("Выполнено %p%; %v / %m");
+
 }
 
 MainWindow::~MainWindow()
@@ -94,6 +94,7 @@ void MainWindow::startScanningFilesystem()
 {
     ui->centralwidget->setEnabled(false);
     ui->menubar->setEnabled(false);
+    bar->setFormat("Сканирование: Выполнено %p%; %v / %m");
     this->bar->setVisible(true);
 }
 

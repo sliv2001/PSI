@@ -1,7 +1,8 @@
 #include "tcontext.h"
 
-TContext::TContext()
+TContext::TContext(QObject *parent)
 {
+    Q_UNUSED(parent);
     imageFilters<<"*.jpg"<<"*.png";
     tabs = new QList<TTableViewModel*>();
     watcher = nullptr;

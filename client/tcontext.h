@@ -12,11 +12,12 @@
 /**
  * @brief The TContext class is main class for application to work with. It represents structure of main window and contains models.
  */
-class TContext
+class TContext : public QObject
 {
+    Q_OBJECT
 public:
 
-    TContext();
+    explicit TContext(QObject *parent = nullptr);
 
     ~TContext();
 
