@@ -78,7 +78,6 @@ void TContext::recognize()
 
 void TContext::recognizeWorker(QPromise<void> &promise)
 {
-    Q_UNUSED(promise);
     foreach(TTableViewModel* model, *(this->tabs)){
         for (int i=0; i<model->rowCount(QModelIndex()); i++){
             if (model->value(i).tags==""){
@@ -86,6 +85,7 @@ void TContext::recognizeWorker(QPromise<void> &promise)
                 TMediaFile f=model->value(i);
                 f.tags = "In Progress";
                 model->update(i, f);
+                /* добавить получение ответа */
                 if (promise.isCanceled())
                     return;
             }

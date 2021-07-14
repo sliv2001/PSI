@@ -15,6 +15,7 @@ SOURCES += \
     tcontext.cpp \
     test_mainwindow.cpp \
     tmediafile.cpp \
+    tserverresponce.cpp \
     ttabledelegate.cpp \
     ttableviewmodel.cpp
 
@@ -24,6 +25,7 @@ HEADERS += \
     tcontext.h \
     test_mainwindow.h \
     tmediafile.h \
+    tserverresponce.h \
     ttabledelegate.h \
     ttableviewmodel.h
 
