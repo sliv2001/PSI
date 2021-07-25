@@ -1,8 +1,9 @@
-QT       += core gui testlib network concurrent
+QT       += core gui network concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
+CONFIG -= console
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -13,7 +14,6 @@ SOURCES += \
     mainwindow.cpp \
     tclient.cpp \
     tcontext.cpp \
-    test_mainwindow.cpp \
     tmediafile.cpp \
     tserverresponce.cpp \
     ttabledelegate.cpp \
@@ -23,7 +23,6 @@ HEADERS += \
     mainwindow.h \
     tclient.h \
     tcontext.h \
-    test_mainwindow.h \
     tmediafile.h \
     tserverresponce.h \
     ttabledelegate.h \

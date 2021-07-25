@@ -117,6 +117,7 @@ void TContext::exportWorker(QPromise<void> &promise, QDir path)
             progressValue++;
             promise.setProgressValue(progressValue);
         }
+        path.cdUp();
     }
 }
 
