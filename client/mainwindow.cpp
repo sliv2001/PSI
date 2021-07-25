@@ -90,24 +90,45 @@ void MainWindow::deleteAllWidgets()
     }
 }
 
+void MainWindow::lockInterface(bool lock)
+{
+    ui->centralwidget->setEnabled(!lock);
+    ui->menubar->setEnabled(!lock);
+
+    this->bar->setVisible(lock);
+}
+
 void MainWindow::startScanningFilesystem()
 {
-    ui->centralwidget->setEnabled(false);
-    ui->menubar->setEnabled(false);
     bar->setFormat("Сканирование: Выполнено %p%; %v / %m");
-    this->bar->setVisible(true);
+    lockInterface(true);
+}
+
+void MainWindow::startExport()
+{
+    bar->setFormat("Экспорт: Выполнено %p%; %v / %m");
+    lockInterface(true);
 }
 
 void MainWindow::finishScanningFilesystem()
 {
-    ui->centralwidget->setEnabled(true);
-    ui->menubar->setEnabled(true);
-    this->bar->setVisible(false);
+    lockInterface(false);
     drawContext();
+#ifdef NETREC
     context->recognize();
+#endif
+    delete context->fileSystemScanWatcher;
+    bar->setRange(0, 0);
 }
 
-void MainWindow::progressScanningFilesystem(int progress)
+void MainWindow::finishExport()
+{
+    lockInterface(false);
+    delete context->exportWatcher;
+    bar->setRange(0, 0);
+}
+
+void MainWindow::progressAtWork(int progress)
 {
     this->bar->setValue(progress);
 
@@ -142,12 +163,12 @@ void MainWindow::on_action_2_triggered()
         context = new TContext();
         context->fileSystemScanWatcher = new QFutureWatcher<void>();
         connect(context->fileSystemScanWatcher, &QFutureWatcher<void>::finished, this, &MainWindow::finishScanningFilesystem);
-        connect(context->fileSystemScanWatcher, &QFutureWatcher<void>::progressValueChanged, this, &MainWindow::progressScanningFilesystem);
+        connect(context->fileSystemScanWatcher, &QFutureWatcher<void>::progressValueChanged, this, &MainWindow::progressAtWork);
         connect(context->fileSystemScanWatcher, &QFutureWatcher<void>::progressRangeChanged, this, &MainWindow::setupBar);
         QFuture<void> future = context->init(strdir);
         context->fileSystemScanWatcher->setFuture(future);
-        this->bar->setMaximum(future.progressMaximum());
-        this->bar->setMinimum(0);
+
+        setupBar(0, 0);
     }
 
 }
@@ -156,5 +177,21 @@ void MainWindow::on_action_2_triggered()
 void MainWindow::on_action_triggered()
 {
 
+}
+
+
+void MainWindow::on_action_3_triggered()
+{
+    QString strdir = QFileDialog::getExistingDirectory(this, "Выбор папки для экспорта", QDir::homePath());
+
+    QDir dir(strdir);
+    if (strdir!=""){
+    startExport();
+    context->exportWatcher = new QFutureWatcher<void>();
+    connect(context->exportWatcher, &QFutureWatcher<void>::finished, this, &MainWindow::finishExport);
+    connect(context->exportWatcher, &QFutureWatcher<void>::progressValueChanged, this, &MainWindow::progressAtWork);
+    connect(context->exportWatcher, &QFutureWatcher<void>::progressRangeChanged, this, &MainWindow::setupBar);
+    QFuture<void> future = context->Export(dir);
+    }
 }
 

@@ -4,6 +4,7 @@
 #include <QString>
 #include <QFileInfo>
 #include <QIcon>
+#include <QDir>
 #include <exiv2/exiv2.hpp>
 #include <math.h>
 
@@ -27,6 +28,8 @@ public:
     QIcon getIcon() const;
 
     QSize getResolution() const;
+
+    bool move(QString path);
 
     /**
      * @brief fullPath is obviously absolute path to current file.

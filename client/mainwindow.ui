@@ -109,7 +109,7 @@
   </action>
   <action name="action_3">
    <property name="text">
-    <string>Выбрать папку</string>
+    <string>Экспортировать в папку</string>
    </property>
   </action>
   <action name="action_4">

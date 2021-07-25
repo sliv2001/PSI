@@ -39,6 +39,7 @@ public:
     TTableViewModel* newTable(QString name);
     void getFiles(QPromise<void>* promise, int* value, QStringList* str);
     QFutureWatcher<void>* fileSystemScanWatcher;
+    QFutureWatcher<void>* exportWatcher;
     QFutureWatcher<void>* recognizeWatcher;
     int getImageCount(QString rpath);
 
@@ -46,12 +47,17 @@ public:
 
     void recognize();
 
+    QFuture<void> Export(QDir path);
+
 private:
     QList<TTableViewModel*> *tabs;
     TClient* client;
     void recursiveInit(QPromise<void>* promise, int* value, QString rpath);
     void startRecursiveInit(QPromise<void> &promise, QString rpath);
     void recognizeWorker(QPromise<void> &promise);
+    void exportWorker(QPromise<void> &promise, QDir path);
+
+    int totalImageCount;
 
 };
 

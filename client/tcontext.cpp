@@ -76,6 +76,13 @@ void TContext::recognize()
 
 }
 
+QFuture<void> TContext::Export(QDir path)
+{
+    QFuture future = QtConcurrent::run(&TContext::exportWorker, this, path);
+    exportWatcher->setFuture(future);
+    return future;
+}
+
 void TContext::recognizeWorker(QPromise<void> &promise)
 {
     foreach(TTableViewModel* model, *(this->tabs)){
@@ -89,6 +96,26 @@ void TContext::recognizeWorker(QPromise<void> &promise)
                 if (promise.isCanceled())
                     return;
             }
+        }
+    }
+}
+
+void TContext::exportWorker(QPromise<void> &promise, QDir path)
+{
+    promise.setProgressRange(0, totalImageCount);
+    int progressValue = 0;
+    foreach(TTableViewModel* model, *(this->tabs)){
+        if (!QDir(path.absolutePath()+"/"+model->name).exists())
+            if (model->name==""||!path.mkdir(model->name)){
+                promise.setException(QException());
+                return;
+            }
+        path.cd(model->name);
+        for (int i=0; i<model->rowCount(QModelIndex()); i++){
+            model->value(i).move(path.absolutePath()+"/"+QFileInfo(model->value(i).fullPath).fileName());
+
+            progressValue++;
+            promise.setProgressValue(progressValue);
         }
     }
 }

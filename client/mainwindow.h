@@ -1,4 +1,4 @@
-#ifndef MAINWINDOW_H
+﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
@@ -39,9 +39,13 @@ private slots:
 
     void startScanningFilesystem();
 
+    void startExport();
+
     void finishScanningFilesystem();
 
-    void progressScanningFilesystem(int progress);
+    void finishExport();
+
+    void progressAtWork(int progress);
 
     void setupBar(int min, int max);
 
@@ -53,7 +57,10 @@ private slots:
 
     void on_action_triggered();
 
+    void on_action_3_triggered();
+
 private:
 
+    void lockInterface(bool lock);
 };
 #endif // MAINWINDOW_H

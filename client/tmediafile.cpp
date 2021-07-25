@@ -65,6 +65,22 @@ QSize TMediaFile::getResolution() const
     return s;
 }
 
+bool TMediaFile::move(QString path)
+{
+    QFile f(this->fullPath);
+    if (!f.rename(path)){
+        if (QFileInfo(path).exists()){
+            if (!move(path+" (1)"))
+                return false;
+        }
+        else {
+            return false;
+        }
+    }
+    this->fullPath=path;
+    return true;
+}
+
 int TMediaFile::getYear_setTags()
 {
     if (!QFile(this->fullPath).exists()){
