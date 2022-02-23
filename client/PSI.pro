@@ -1,4 +1,4 @@
-QT       += core gui network concurrent
+QT       += core gui network concurrent testlib
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -44,7 +44,22 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     TODO
 
-win32: LIBS += -L$$PWD/'../../../../Program Files (x86)/exiv2/lib/' -llibexiv2.dll
+win32: LIBS += -L$$PWD/../lib/ -llibexiv2.dll
 
-INCLUDEPATH += $$PWD/'../../../../Program Files (x86)/exiv2/include'
-DEPENDPATH += $$PWD/'../../../../Program Files (x86)/exiv2/include'
+INCLUDEPATH += $$PWD/../submodules/exiv2/include \
+    $$PWD/../lib/include \
+    $$PWD/test
+
+DEPENDPATH += $$PWD/../submodules/exiv2/include \
+    $$PWD/../lib/include \
+    $$PWD/test
+
+win32: LIBS += -L$$PWD/../lib/ -lexiv2-xmp
+
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../lib/exiv2-xmp.lib
+else:win32-g++: PRE_TARGETDEPS += $$PWD/../lib/libexiv2-xmp.a
+
+win32: LIBS += -L$$PWD/../lib/ -lwmain
+
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../lib/wmain.lib
+else:win32-g++: PRE_TARGETDEPS += $$PWD/../lib/libwmain.a
