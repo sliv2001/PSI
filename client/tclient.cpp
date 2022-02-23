@@ -31,16 +31,18 @@ void TClient::sendFile(QString path)
 
 void TClient::sendFile(TMediaFile file)
 {
-    /*Проверка на подключенность сокета проведена в функции выше по стеку*/
-    QDataStream out(socket);
-    out.setVersion(QDataStream::Qt_6_2);
-    out<<file.pictureCode;
-    QPixmap pixmap(file.fullPath);
-    QByteArray bytes;
-    QBuffer buffer(&bytes);
-    buffer.open(QIODevice::WriteOnly);
-    pixmap.save(&buffer, "JPG");
-    out<<bytes;
+    if (connected){
+        QDataStream out(socket);
+        out.setVersion(QDataStream::Qt_6_2);
+        out<<file.pictureCode;
+        QPixmap pixmap(file.fullPath);
+        QByteArray bytes;
+        QBuffer buffer(&bytes);
+        buffer.open(QIODevice::WriteOnly);
+        pixmap.save(&buffer, "JPG");
+        out<<bytes;
+        socket->flush();
+    }
 }
 
 void TClient::on_socketConnected()
