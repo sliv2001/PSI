@@ -12,18 +12,35 @@ thresh = 0.5
 server = QtNetwork.QTcpServer()
 socketList = []
 
-def initNet():
-    module_handle = os.getcwd()
-    detector = hub.load(module_handle).signatures['default']
-    return
+module_handle = os.getcwd()
+detector = hub.load(module_handle).signatures['default']
 
-def process(picture, socket):
-    img = tf.image.decode_jpeg(data, channels=3)
-    converted_img  = tf.image.convert_image_dtype(img, tf.float32)[tf.newaxis, ...]
-    result = detector(converted_img)
-    result = {key:value.numpy() for key,value in result.items()}
-    scores = result["detection_scores"]
+def countOfScores(scores):
+    res=0
+    for i in range(len(scores)):
+        if scores[i]>thresh:
+            ++res
+    return res
+
+def process(picture, pictureCode, socket):
+    try:
+        img = tf.io.decode_jpeg(picture.data())
+        converted_img  = tf.image.convert_image_dtype(img, tf.float32)[tf.newaxis, ...]
+        result = detector(converted_img)
+        result = {key:value.numpy() for key,value in result.items()}
+        scores = result["detection_scores"]
+
+        out = QtCore.QDataStream(socket)
     
+        out << pictureCode
+        out << countOfScores(scores)
+        for i in range(len(scores)):
+            if scores[i]>thresh:
+                out << QtCore.QByteArray(bytearray(result["detection_boxes"][i]))
+                out << QtCore.QByteArray(bytearray(result["detection_class_entities"][i]))
+                out << QtCore.QByteArray(bytearray(result["detection_scores"][i]))
+    except Exception:
+        print(pictureCode, ': wrong result of processing')
     return
 
 class MySocket:
@@ -31,7 +48,7 @@ class MySocket:
     def socket_disconnect(self):
         self.socket.close()
         for s in socketList:
-            if (s.state()==QAbstractSocket.UnconnectedState or s.state() == QAbstractSocket.ClosingState):
+            if (s.socket.state()==QAbstractSocket.UnconnectedState or s.socket.state() == QAbstractSocket.ClosingState):
                 socketList.remove(s)
         return
     def readAndProcess(self):
@@ -43,7 +60,7 @@ class MySocket:
         into>>picture
         if (not into.commitTransaction()):
             return
-        process(picture, self.socket)
+        process(picture, pictureCode, self.socket)
         return
 
 def server_newConnection():
@@ -60,7 +77,5 @@ if __name__ == "__main__":
     server.listen(port=55555)
     print(server.serverPort())
     server.newConnection.connect(server_newConnection)
-
-    initNet()
     
     sys.exit(app.exec())
