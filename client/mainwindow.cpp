@@ -7,7 +7,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    context = new TContext();
     ui->tabWidget->setVisible(false);
 
     bar = new QProgressBar(this->statusBar());
@@ -114,7 +113,7 @@ void MainWindow::finishScanningFilesystem()
 {
     lockInterface(false);
     drawContext();
-#ifdef NETREC
+#ifdef NET_RECOGNITION
     context->recognize();
 #endif
     delete context->fileSystemScanWatcher;
@@ -159,7 +158,8 @@ void MainWindow::on_action_2_triggered()
     QDir dir;
     if (dir.exists(strdir)){
         startScanningFilesystem();
-        delete context;
+        if (context!=NULL)
+            delete context;
         context = new TContext();
         context->fileSystemScanWatcher = new QFutureWatcher<void>();
         connect(context->fileSystemScanWatcher, &QFutureWatcher<void>::finished, this, &MainWindow::finishScanningFilesystem);

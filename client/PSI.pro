@@ -15,7 +15,6 @@ SOURCES += \
     tclient.cpp \
     tcontext.cpp \
     tmediafile.cpp \
-    tserverresponce.cpp \
     ttabledelegate.cpp \
     ttableviewmodel.cpp
 
@@ -24,7 +23,6 @@ HEADERS += \
     tclient.h \
     tcontext.h \
     tmediafile.h \
-    tserverresponce.h \
     ttabledelegate.h \
     ttableviewmodel.h
 
@@ -63,3 +61,6 @@ win32: LIBS += -L$$PWD/../lib/ -lwmain
 
 win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../lib/wmain.lib
 else:win32-g++: PRE_TARGETDEPS += $$PWD/../lib/libwmain.a
+
+
+DEFINES += NET_RECOGNITION

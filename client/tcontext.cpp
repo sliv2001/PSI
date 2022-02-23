@@ -88,11 +88,13 @@ void TContext::recognizeWorker(QPromise<void> &promise)
     foreach(TTableViewModel* model, *(this->tabs)){
         for (int i=0; i<model->rowCount(QModelIndex()); i++){
             if (model->value(i).tags==""){
-                this->client->sendFile(model->value(i).fullPath);
                 TMediaFile f=model->value(i);
-                f.tags = "In Progress";
-                model->update(i, f);
-                /* добавить получение ответа */
+                if (client->connected){
+                    this->client->sendFile(model->value(i));
+                    f.tags = "In Progress";
+                    model->update(i, f);
+                    /* добавить получение ответа */
+                }
                 if (promise.isCanceled())
                     return;
             }

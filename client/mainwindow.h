@@ -27,7 +27,7 @@ public:
     ~MainWindow();
 
     Ui::MainWindow *ui;
-    TContext* context;
+    TContext* context=NULL;
     QProgressBar* bar;
 
     static int getYear(QString photoPath);

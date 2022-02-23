@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QTcpSocket>
 #include <QFile>
+#include "tmediafile.h"
 
 class TClient : public QObject
 {
@@ -11,7 +12,20 @@ class TClient : public QObject
 public:
     explicit TClient(QObject *parent = nullptr);
     ~TClient();
+
+    /**
+     * @brief sendFile sends whole file to server
+     * @param path
+     */
     void sendFile(QString path);
+
+    /**
+     * @brief sendFile sends media (PixMap, etc) to server
+     * @param file
+     */
+    void sendFile(TMediaFile file);
+
+    bool connected=0;
 
 signals:
 

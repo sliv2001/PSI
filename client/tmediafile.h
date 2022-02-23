@@ -32,6 +32,11 @@ public:
     bool move(QString path);
 
     /**
+     * @brief picture is data of a photo itself
+     */
+    QPixmap* picture;
+
+    /**
      * @brief fullPath is obviously absolute path to current file.
      */
     QString fullPath;
@@ -62,6 +67,11 @@ public:
      */
     QString live_path;
 
+    /**
+     * @brief pictureCode is hash identifier from full path to a file.
+     */
+    QByteArray pictureCode;
+
 private:
     /**
      * @brief getYear uses Exiv2 to read DateTimeOriginal metadatum from current file.
@@ -75,6 +85,11 @@ private:
      */
     void getLiveVideo(QString path);
     QSize resolution;
+
+    /**
+     * @brief getHashCode creates a hash identifier using full path to a file.
+     */
+    void getHashCode();
 };
 
 #endif // TMEDIAFILE_H

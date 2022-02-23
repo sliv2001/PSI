@@ -1,4 +1,8 @@
+#include <QCryptographicHash>
 #include "tmediafile.h"
+
+int g_count_ofpixmaps=0;
+int g_maxcount_ofpixmaps=0; /*Не использовать сохранение pixmap в памяти*/
 
 void TMediaFile::getLiveVideo(QString path)
 {
@@ -19,6 +23,13 @@ void TMediaFile::getLiveVideo(QString path)
         this->live_path = "";
 }
 
+void TMediaFile::getHashCode()
+{
+    QCryptographicHash hash(QCryptographicHash::Md5);
+    hash.addData(this->fullPath.toUtf8());
+    this->pictureCode=hash.result();
+}
+
 TMediaFile::TMediaFile(QString path)
 {
     QString p = path;
@@ -34,6 +45,15 @@ TMediaFile::TMediaFile(QString path)
     getLiveVideo(path);
     resolution=QSize(0, 0);
     resolution=getResolution();
+    getHashCode();
+
+    if (g_count_ofpixmaps<g_maxcount_ofpixmaps){
+        this->picture = new QPixmap(this->fullPath);
+        g_count_ofpixmaps++;
+    }
+    else {
+        this->picture = NULL;
+    }
 }
 
 QIcon TMediaFile::getIcon() const

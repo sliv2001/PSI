@@ -1,3 +1,4 @@
+#include <QBuffer>
 #include "tclient.h"
 
 TClient::TClient(QObject *parent) : QObject(parent)
@@ -20,8 +21,6 @@ void TClient::sendFile(QString path)
     QFile f = QFile(path);
     if (f.open(QIODevice::ReadOnly)){
         uint64_t size = f.size();
-        int32_t pathSize = path.length();
-
         socket->write((char*)&size, 8);                     //Send length of file
 
         auto data = f.readAll();
@@ -30,17 +29,34 @@ void TClient::sendFile(QString path)
     f.close();
 }
 
+void TClient::sendFile(TMediaFile file)
+{
+    /*Проверка на подключенность сокета проведена в функции выше по стеку*/
+    QDataStream out(socket);
+    out.setVersion(QDataStream::Qt_6_2);
+    out<<file.pictureCode;
+    QPixmap pixmap(file.fullPath);
+    QByteArray bytes;
+    QBuffer buffer(&bytes);
+    buffer.open(QIODevice::WriteOnly);
+    pixmap.save(&buffer, "JPG");
+    out<<bytes;
+}
+
 void TClient::on_socketConnected()
 {
-    qInfo("done");
+    qInfo("Socket Connected");
+    connected=1;
 }
 
 void TClient::on_socketDisconnected()
 {
-    qInfo("undone");
+    qInfo("Socket Disconnected");
+    connected=0;
 }
 
 void TClient::on_socketDisplayError(QAbstractSocket::SocketError)
 {
-    qInfo("undone");
+    qWarning("%s", socket->errorString().toStdString().c_str());
+    connected=0;
 }
