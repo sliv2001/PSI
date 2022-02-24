@@ -19,11 +19,11 @@ def countOfScores(scores):
     res=0
     for i in range(len(scores)):
         if scores[i]>thresh:
-            ++res
+            res=res+1
     return res
 
 def process(picture, pictureCode, socket):
-    try:
+    #try:
         img = tf.io.decode_jpeg(picture.data())
         converted_img  = tf.image.convert_image_dtype(img, tf.float32)[tf.newaxis, ...]
         result = detector(converted_img)
@@ -33,22 +33,29 @@ def process(picture, pictureCode, socket):
         out = QtCore.QDataStream(socket)
     
         out << pictureCode
-        out << countOfScores(scores)
+        amount = bytearray()
+        amount.append(countOfScores(scores))
+        out << amount
         for i in range(len(scores)):
             if scores[i]>thresh:
-                out << QtCore.QByteArray(bytearray(result["detection_boxes"][i]))
-                out << QtCore.QByteArray(bytearray(result["detection_class_entities"][i]))
-                out << QtCore.QByteArray(bytearray(result["detection_scores"][i]))
-    except Exception:
-        print(pictureCode, ': wrong result of processing')
-    return
+                buffer = QtCore.QByteArray(bytearray(result["detection_boxes"][i]))
+                out << buffer
+                buffer = QtCore.QByteArray(bytearray(result["detection_class_entities"][i]))
+                out << buffer
+                print(buffer)
+                buffer = QtCore.QByteArray(bytearray(result["detection_scores"][i]))
+                out << buffer
+                socket.flush()
+    #except Exception:
+        #print(pictureCode, ': wrong result of processing')
+        return
 
 class MySocket:
     socket = QtNetwork.QTcpSocket()
     def socket_disconnect(self):
         self.socket.close()
         for s in socketList:
-            if (s.socket.state()==QAbstractSocket.UnconnectedState or s.socket.state() == QAbstractSocket.ClosingState):
+            if (s.socket.state()==QtNetwork.QAbstractSocket.UnconnectedState or s.socket.state() == QtNetwork.QAbstractSocket.ClosingState):
                 socketList.remove(s)
         return
     def readAndProcess(self):

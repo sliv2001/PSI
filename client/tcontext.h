@@ -49,6 +49,8 @@ public:
 
     QFuture<void> Export(QDir path);
 
+    void updateModelWithResult(QVector<QByteArray> result);
+
 private:
     QList<TTableViewModel*> *tabs;
     TClient* client;

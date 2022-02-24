@@ -7,7 +7,7 @@ TContext::TContext(QObject *parent)
     tabs = new QList<TTableViewModel*>();
     fileSystemScanWatcher = nullptr;
     recognizeWatcher = new QFutureWatcher<void>(this);
-    client = new TClient();
+    client = new TClient(this);
 }
 
 TContext::~TContext()
@@ -81,6 +81,32 @@ QFuture<void> TContext::Export(QDir path)
     QFuture future = QtConcurrent::run(&TContext::exportWorker, this, path);
     exportWatcher->setFuture(future);
     return future;
+}
+
+QString concatTags(QVector<QByteArray> array){
+    QString res="";
+    if (array.length()==2)
+        return "NOTAG";
+    int m=(array.length()-1)/3;
+    for (int i=0; i<m; i++){
+        res+=array[3*i+2];
+        res+=";";
+    }
+    return res;
+}
+
+void TContext::updateModelWithResult(QVector<QByteArray> result)
+{
+    foreach(TTableViewModel* model, *(this->tabs)){
+        for (int i=0; i<model->rowCount(QModelIndex()); i++){
+            if (model->value(i).pictureCode==result[0]){
+                TMediaFile f=model->value(i);
+                f.tags=concatTags(result);
+                model->update(i, f);
+                break;
+            }
+        }
+    }
 }
 
 void TContext::recognizeWorker(QPromise<void> &promise)

@@ -1,4 +1,5 @@
 #include <QBuffer>
+#include "mainwindow.h"
 #include "tclient.h"
 
 TClient::TClient(QObject *parent) : QObject(parent)
@@ -8,6 +9,7 @@ TClient::TClient(QObject *parent) : QObject(parent)
     connect(socket, SIGNAL(connected()), this, SLOT(on_socketConnected()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(on_socketDisconnected()));
     connect(socket, SIGNAL(errorOccurred(QAbstractSocket::SocketError)), this, SLOT(on_socketDisplayError(QAbstractSocket::SocketError)));
+    connect(socket, SIGNAL(readyRead()), this, SLOT(on_socketReadyRead()));
     socket->connectToHost("127.0.0.1", 55555);
 }
 
@@ -45,6 +47,33 @@ void TClient::sendFile(TMediaFile file)
     }
 }
 
+QVector<QByteArray> TClient::parseResponse()
+{
+    QDataStream in(socket);
+    QVector<QByteArray> res;
+    QByteArray instance, amount;
+    int a;
+
+    in.startTransaction();
+    in>>instance;
+    res.append(instance);
+    in>>amount;
+
+    if ((a=amount[0])<0){
+        res.clear();
+        qWarning("Server returned wrong amount of objects: %d", a);
+        return res;
+    }
+    for (int i=0; i<a*3; i++) /* x3 because for each object 3 pieces of data */
+    {
+        in>>instance;
+        res.append(instance);
+    }
+    if (!in.commitTransaction())
+        res.clear();
+    return res;
+}
+
 void TClient::on_socketConnected()
 {
     qInfo("Socket Connected");
@@ -61,4 +90,12 @@ void TClient::on_socketDisplayError(QAbstractSocket::SocketError)
 {
     qWarning("%s", socket->errorString().toStdString().c_str());
     connected=0;
+}
+
+void TClient::on_socketReadyRead()
+{
+    QVector<QByteArray> result = parseResponse();
+    if (result.isEmpty())
+        return;
+    ((TContext*)(this->parent()))->updateModelWithResult(result);
 }

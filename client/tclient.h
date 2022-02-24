@@ -25,6 +25,8 @@ public:
      */
     void sendFile(TMediaFile file);
 
+    QVector<QByteArray> parseResponse();
+
     bool connected=0;
 
 signals:
@@ -33,6 +35,7 @@ private slots:
     void on_socketConnected();
     void on_socketDisconnected();
     void on_socketDisplayError(QAbstractSocket::SocketError);
+    void on_socketReadyRead();
 
 private:
     QTcpSocket* socket;
