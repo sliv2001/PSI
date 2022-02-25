@@ -98,4 +98,5 @@ void TClient::on_socketReadyRead()
     if (result.isEmpty())
         return;
     ((TContext*)(this->parent()))->updateModelWithResult(result);
+    imgsProcessed++;
 }

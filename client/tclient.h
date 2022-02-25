@@ -28,6 +28,7 @@ public:
     QVector<QByteArray> parseResponse();
 
     bool connected=0;
+    int imgsProcessed=0;
 
 signals:
 

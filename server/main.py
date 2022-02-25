@@ -23,7 +23,7 @@ def countOfScores(scores):
     return res
 
 def process(picture, pictureCode, socket):
-    #try:
+    try:
         img = tf.io.decode_jpeg(picture.data())
         converted_img  = tf.image.convert_image_dtype(img, tf.float32)[tf.newaxis, ...]
         result = detector(converted_img)
@@ -46,9 +46,12 @@ def process(picture, pictureCode, socket):
                 buffer = QtCore.QByteArray(bytearray(result["detection_scores"][i]))
                 out << buffer
                 socket.flush()
-    #except Exception:
-        #print(pictureCode, ': wrong result of processing')
-        return
+    except Exception:
+        print(pictureCode, ': wrong result of processing')
+        out << pictureCode
+        amount = bytearray()
+        amount.append(0)
+    return
 
 class MySocket:
     socket = QtNetwork.QTcpSocket()

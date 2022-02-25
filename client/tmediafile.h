@@ -32,6 +32,15 @@ public:
     bool move(QString path);
 
     /**
+     * @brief concatTags collects data from raw array of server response and deletes duplicates as well as puts data into proper format.
+     * @param array is raw set of data
+     * @return string of image tags
+     */
+    static QString concatTags(QVector<QByteArray> array);
+
+    void updatePropertiesWithResponse(QVector<QByteArray> array);
+
+    /**
      * @brief picture is data of a photo itself
      */
     QPixmap* picture;
@@ -71,6 +80,21 @@ public:
      * @brief pictureCode is hash identifier from full path to a file.
      */
     QByteArray pictureCode;
+
+    /**
+     * @brief rawDetectionBoxes are boxes found by server in special format
+     */
+    QByteArray rawDetectionBoxes;
+
+    /**
+     * @brief rawDetectionClassEntities are entities, like in TMediaFile::tags, but with repetitions
+     */
+    QByteArray rawDetectionClassEntities;
+
+    /**
+     * @brief rawDetectionScores are probabilities for an object to be properly named
+     */
+    QByteArray rawDetectionScores;
 
 private:
     /**

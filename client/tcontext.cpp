@@ -1,5 +1,8 @@
 #include "tcontext.h"
 
+TTableViewModel* ModelBeingRecognized;
+int IndexBeingRecognized;
+
 TContext::TContext(QObject *parent)
 {
     Q_UNUSED(parent);
@@ -83,43 +86,83 @@ QFuture<void> TContext::Export(QDir path)
     return future;
 }
 
-QString concatTags(QVector<QByteArray> array){
+QString TMediaFile::concatTags(QVector<QByteArray> array){
+    QStringList list;
     QString res="";
-    if (array.length()==2)
-        return "NOTAG";
+    if (array.length()==1)
+        return "'NOTAG'";
     int m=(array.length()-1)/3;
     for (int i=0; i<m; i++){
-        res+=array[3*i+2];
-        res+=";";
+        list.append(array[3*i+2]);
     }
+    list.removeDuplicates();
+    res=list.join(';');
+    res.prepend("\'");
+    res.append("\'");
     return res;
+}
+
+void TMediaFile::updatePropertiesWithResponse(QVector<QByteArray> array)
+{
+    if (array.length()==1){
+        this->rawDetectionBoxes.clear();
+        this->rawDetectionClassEntities.clear();
+        this->rawDetectionScores.clear();
+        return;
+    }
+    int m=(array.length()-1)/3;
+    for (int i=0; i<m; i++){
+        this->rawDetectionBoxes.append(array[3*i+1]);
+        this->rawDetectionClassEntities.append(array[3*i+2]);
+        this->rawDetectionScores.append(array[3*i+3]);
+    }
 }
 
 void TContext::updateModelWithResult(QVector<QByteArray> result)
 {
-    foreach(TTableViewModel* model, *(this->tabs)){
-        for (int i=0; i<model->rowCount(QModelIndex()); i++){
-            if (model->value(i).pictureCode==result[0]){
-                TMediaFile f=model->value(i);
-                f.tags=concatTags(result);
-                model->update(i, f);
-                break;
+    TTableViewModel* model=nullptr;
+    int i=-1;
+    if (ModelBeingRecognized!=nullptr
+            &&result[0]==ModelBeingRecognized->value(IndexBeingRecognized).pictureCode){
+        model=ModelBeingRecognized;
+        i=IndexBeingRecognized;
+    } else
+        foreach(TTableViewModel* m, *(this->tabs)){
+            for (int iter=0; iter<m->rowCount(QModelIndex()); iter++){
+                if (m->value(iter).pictureCode==result[0]){
+                    model=m;
+                    i=iter;
+                    break;
+                }
             }
         }
-    }
+    if (model==nullptr||i==-1)
+        return;
+    TMediaFile f=model->value(i);
+    f.tags=f.concatTags(result);
+    f.updatePropertiesWithResponse(result);
+    model->update(i, f);
 }
 
 void TContext::recognizeWorker(QPromise<void> &promise)
 {
     foreach(TTableViewModel* model, *(this->tabs)){
+        int iter=0;
         for (int i=0; i<model->rowCount(QModelIndex()); i++){
             if (model->value(i).tags==""){
                 TMediaFile f=model->value(i);
                 if (client->connected){
                     this->client->sendFile(model->value(i));
+                    ModelBeingRecognized=model;
+                    IndexBeingRecognized=i;
                     f.tags = "In Progress";
                     model->update(i, f);
-                    /* добавить получение ответа */
+                    iter++;
+                    if ((iter)%1==0){
+                        int k=client->imgsProcessed;
+                        while(client->imgsProcessed-k<1)
+                            QThread::msleep(100);
+                    }
                 }
                 if (promise.isCanceled())
                     return;
