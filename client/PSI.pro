@@ -42,25 +42,15 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     TODO
 
-win32: LIBS += -L$$PWD/../lib/ -llibexiv2.dll
+DEFINES += NET_RECOGNITION
+
+unix|win32: LIBS += -L$$PWD/../submodules/exiv2/build/lib/ -llibexiv2.dll
+unix|win32: LIBS += -L$$PWD/../submodules/exiv2/build/lib/ -lexiv2-xmp
+unix|win32: LIBS += -L$$PWD/../submodules/exiv2/build/lib/ -lwmain
 
 INCLUDEPATH += $$PWD/../submodules/exiv2/include \
-    $$PWD/../lib/include \
+    $$PWD/../submodules/exiv2/build \
     $$PWD/test
 
 DEPENDPATH += $$PWD/../submodules/exiv2/include \
-    $$PWD/../lib/include \
-    $$PWD/test
-
-win32: LIBS += -L$$PWD/../lib/ -lexiv2-xmp
-
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../lib/exiv2-xmp.lib
-else:win32-g++: PRE_TARGETDEPS += $$PWD/../lib/libexiv2-xmp.a
-
-win32: LIBS += -L$$PWD/../lib/ -lwmain
-
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../lib/wmain.lib
-else:win32-g++: PRE_TARGETDEPS += $$PWD/../lib/libwmain.a
-
-
-DEFINES += NET_RECOGNITION
+    $$PWD/../submodules/exiv2/build
