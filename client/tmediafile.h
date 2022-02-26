@@ -38,7 +38,13 @@ public:
      */
     static QString concatTags(QVector<QByteArray> array);
 
+    /**
+     * @brief updatePropertiesWithResponse fills raw data with response from array
+     * @param array
+     */
     void updatePropertiesWithResponse(QVector<QByteArray> array);
+
+    QByteArray encodeImage();
 
     /**
      * @brief picture is data of a photo itself
@@ -95,6 +101,15 @@ public:
      * @brief rawDetectionScores are probabilities for an object to be properly named
      */
     QByteArray rawDetectionScores;
+
+    enum coded_as {
+        coded_as_undefined,
+        coded_as_RAW,
+        coded_as_JPEG,
+        coded_as_HEIC
+    };
+
+    TMediaFile::coded_as way_of_coding=coded_as_undefined;
 
 private:
     /**

@@ -86,38 +86,6 @@ QFuture<void> TContext::Export(QDir path)
     return future;
 }
 
-QString TMediaFile::concatTags(QVector<QByteArray> array){
-    QStringList list;
-    QString res="";
-    if (array.length()==1)
-        return "'NOTAG'";
-    int m=(array.length()-1)/3;
-    for (int i=0; i<m; i++){
-        list.append(array[3*i+2]);
-    }
-    list.removeDuplicates();
-    res=list.join(';');
-    res.prepend("\'");
-    res.append("\'");
-    return res;
-}
-
-void TMediaFile::updatePropertiesWithResponse(QVector<QByteArray> array)
-{
-    if (array.length()==1){
-        this->rawDetectionBoxes.clear();
-        this->rawDetectionClassEntities.clear();
-        this->rawDetectionScores.clear();
-        return;
-    }
-    int m=(array.length()-1)/3;
-    for (int i=0; i<m; i++){
-        this->rawDetectionBoxes.append(array[3*i+1]);
-        this->rawDetectionClassEntities.append(array[3*i+2]);
-        this->rawDetectionScores.append(array[3*i+3]);
-    }
-}
-
 void TContext::updateModelWithResult(QVector<QByteArray> result)
 {
     TTableViewModel* model=nullptr;
