@@ -231,6 +231,17 @@ enum heif_chroma getHeifChroma(QImage::Format format){
     }
 }
 
+bool isHeifInterleaved(enum heif_chroma chr){
+    switch (chr){
+    case heif_chroma_420:
+    case heif_chroma_422:
+    case heif_chroma_444:
+    case heif_chroma_monochrome:
+    case heif_chroma_undefined: return 0;
+    default: return 1;
+    }
+}
+
 QByteArray TMediaFile::encodeImage()
 {
     QByteArray res;
@@ -239,13 +250,24 @@ QByteArray TMediaFile::encodeImage()
     heif::Image heif_img;
     QImage qt_img(this->fullPath);
 
-    int heif_chr, heif_sps;
+    enum heif_chroma heif_chr;
+    enum heif_colorspace heif_sps;
     if ((heif_chr=getHeifChroma(qt_img.format()))==heif_chroma_undefined||(heif_sps=getHeifColorSpace(qt_img.format()))){
         qt_img.save(res, "JPEG");
         this->way_of_coding=coded_as_JPEG;
         return res;
     }
-    /*stop here trying to encode heic*/
+
+    QByteArray red, green, blue, alpha;
+    heif_img.create(qt_img.width(), qt_img.height(), heif_sps, heif_chr);
+    if (isHeifInterleaved(heif_chr)){
+        heif_img.add_plane(heif_channel_interleaved, qt_img.width(), qt_img.height(), qt_img.depth());
+    }
+
+    red.setRawData()
+    for (int i=0; i<qt_img.height(); i++){
+
+    }
 }
 
 QString TMediaFile::concatTags(QVector<QByteArray> array){
