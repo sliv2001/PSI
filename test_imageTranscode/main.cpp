@@ -114,33 +114,30 @@ bool hasHeifAlpha(enum heif_chroma chr){
 }
 
 uchar* get_heifData(QString s){
-    heif_context* ctx = heif_context_alloc();
+    heif::Context ctx;
 
     // get the default encoder
-    heif_encoder* encoder;
-    heif_context_get_encoder_for_format(ctx, heif_compression_HEVC, &encoder);
+    heif::Encoder enc(heif_compression_HEVC);
 
     // set the encoder parameters
-    heif_encoder_set_lossy_quality(encoder, 50);
+    enc.set_lossy_quality(50);
 
     // encode the image
-    heif_image* heif_img; // code to fill in the image omitted in this example
+    heif::Image heif_img;
     QImage qt_img(s);
-    qt_img = qt_img.convertToFormat(QImage::Format_RGBA8888);
-    int len;
-    heif_image_create(qt_img.width(), qt_img.height(), heif_colorspace_RGB, heif_chroma_interleaved_RGBA, &heif_img);
-    heif_image_add_plane(heif_img, heif_channel_interleaved, qt_img.width(), qt_img.height(), 8);
-    uchar* dataptr=heif_image_get_plane(heif_img, heif_channel_interleaved, &len);
-    memset(dataptr, 0, qt_img.width()*qt_img.height()*4);
+    qt_img=qt_img.convertToFormat(QImage::Format_RGBA8888);
+    int stride;
+    heif_img.create(qt_img.width(), qt_img.height(), heif_colorspace_RGB, heif_chroma_interleaved_RGBA);
+    heif_img.add_plane(heif_channel_interleaved, qt_img.width(), qt_img.height(), 8);
+    uchar* dataptr=heif_img.get_plane(heif_channel_interleaved, &stride);
+    memset(dataptr, 0, stride*heif_img.get_height(heif_channel_interleaved));
     for (int i=0; i<qt_img.height(); i++){
-        memcpy(dataptr+qt_img.width()*4*i, qt_img.scanLine(i), qt_img.bytesPerLine());
+        memcpy(dataptr+stride*i, qt_img.scanLine(i), qt_img.bytesPerLine());
     }
 
-    heif_context_encode_image(ctx, heif_img, encoder, nullptr, nullptr);
+    ctx.encode_image(heif_img, enc);
 
-    heif_encoder_release(encoder);
-
-    heif_context_write_to_file(ctx, "encode.heic");
+    ctx.write_to_file("encode.heic");
     return dataptr;
 }
 
@@ -170,6 +167,6 @@ int main(int argc, char *argv[])
 {
     QString sample="sample.jpg";
     get_heifData("sample.jpg");
-    get_decodedData("sample.heic");
+    //get_decodedData("sample.heic");
     return 0;
 }
