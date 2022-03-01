@@ -4,11 +4,14 @@ mingw-w64-x86_64-gcc mingw-w64-x86_64-gettext mingw-w64-x86_64-gtest \
 mingw-w64-x86_64-libiconv mingw-w64-x86_64-make mingw-w64-x86_64-zlib \
 autoconf autogen automake autotools mingw-w64-x86_64-x265 \
 mingw-w64-x86_64-libde265 mingw-w64-x86_64-libjpeg-turbo \
---noconfirm
+--noconfirm --needed
+
+
+#Compiling exiv2
 
 cd ./exiv2
-
-mkdir build && cd build
+mkdir build
+cd build
 cmake -G "MSYS Makefiles" \
       -DCMAKE_CXX_FLAGS=-Wno-deprecated \
       -DCMAKE_BUILD_TYPE=Release \
@@ -21,6 +24,9 @@ cmake -G "MSYS Makefiles" \
       ..
 cmake --build . --parallel
 cd ../../
+
+
+#Compiling libheif
 
 cd ./libheif
 ./autogen.sh

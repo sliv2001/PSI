@@ -53,7 +53,7 @@ enum heif_chroma getHeifChroma(QImage::Format format){
     case QImage::Format_Mono:                       return heif_chroma_monochrome;
     case QImage::Format_MonoLSB:                    return heif_chroma_undefined;
     case QImage::Format_Indexed8:                   return heif_chroma_undefined;
-    case QImage::Format_RGB32:                      return heif_chroma_interleaved_32bit;
+    case QImage::Format_RGB32:                      return heif_chroma_interleaved_RRGGBB_BE;
     case QImage::Format_ARGB32:                     return heif_chroma_undefined;
     case QImage::Format_ARGB32_Premultiplied:       return heif_chroma_undefined;
     case QImage::Format_RGB16:                      return heif_chroma_undefined;
@@ -113,77 +113,63 @@ bool hasHeifAlpha(enum heif_chroma chr){
     }
 }
 
+uchar* get_heifData(QString s){
+    heif_context* ctx = heif_context_alloc();
+
+    // get the default encoder
+    heif_encoder* encoder;
+    heif_context_get_encoder_for_format(ctx, heif_compression_HEVC, &encoder);
+
+    // set the encoder parameters
+    heif_encoder_set_lossy_quality(encoder, 50);
+
+    // encode the image
+    heif_image* heif_img; // code to fill in the image omitted in this example
+    QImage qt_img(s);
+    qt_img = qt_img.convertToFormat(QImage::Format_RGBA8888);
+    int len;
+    heif_image_create(qt_img.width(), qt_img.height(), heif_colorspace_RGB, heif_chroma_interleaved_RGBA, &heif_img);
+    heif_image_add_plane(heif_img, heif_channel_interleaved, qt_img.width(), qt_img.height(), 8);
+    uchar* dataptr=heif_image_get_plane(heif_img, heif_channel_interleaved, &len);
+    memset(dataptr, 0, qt_img.width()*qt_img.height()*4);
+    for (int i=0; i<qt_img.height(); i++){
+        memcpy(dataptr+qt_img.width()*4*i, qt_img.scanLine(i), qt_img.bytesPerLine());
+    }
+
+    heif_context_encode_image(ctx, heif_img, encoder, nullptr, nullptr);
+
+    heif_encoder_release(encoder);
+
+    heif_context_write_to_file(ctx, "encode.heic");
+    return dataptr;
+}
+
+uchar* get_decodedData(QString s){
+    heif_context* ctx = heif_context_alloc();
+    heif_context_read_from_file(ctx, s.toStdString().c_str(), nullptr);
+
+    // get a handle to the primary image
+    heif_image_handle* handle;
+    heif_context_get_primary_image_handle(ctx, &handle);
+
+    // decode the image and convert colorspace to RGB, saved as 24bit interleaved
+    heif_image* img;
+    heif_decode_image(handle, &img, heif_colorspace_RGB, heif_chroma_interleaved_RGBA, nullptr);
+
+    int stride;
+    const uint8_t* data = heif_image_get_plane_readonly(img, heif_channel_interleaved, &stride);
+    QImage qt_img(data, heif_image_get_width(img, heif_channel_interleaved),
+                  heif_image_get_height(img, heif_channel_interleaved),
+                  QImage::Format_RGBA8888);
+    qt_img.save("decode.jpg", "JPG");
+
+    return (uchar*)data;
+}
+
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
-    std::string fullPath;
-    //std::cin>>fullPath;
-    QByteArray res;
-    heif::Context ctx;
-    heif::Encoder ecd(heif_compression_HEVC);
-    heif::Image heif_img;
-    QString p;
-    p.fromStdString(fullPath);
-    p="D:\\Desktop\\образец\\2017\\IMG_5126.JPG";
-    QImage qt_img(p);
-
-    enum heif_chroma heif_chr;
-    enum heif_colorspace heif_sps;
-    if ((heif_chr=getHeifChroma(qt_img.format()))==heif_chroma_undefined||(heif_sps=getHeifColorSpace(qt_img.format()))==heif_colorspace_undefined){
-        printf("wrong img");
-        return -1;
-    }
-
-    QByteArray red, green, blue, alpha, inter;
-    int bytesPerLine=0;
-    heif_img.create(qt_img.width(), qt_img.height(), heif_sps, heif_chr);
-    if (isHeifInterleaved(heif_chr)){
-        heif_img.add_plane(heif_channel_interleaved, qt_img.width(), qt_img.height(), qt_img.depth());
-        char* dataptr=(char*)heif_img.get_plane(heif_channel_interleaved, &bytesPerLine);
-        if (dataptr==NULL||bytesPerLine<1){
-            printf("wrong dataptr");
-            return -1;
-        }
-        inter.setRawData(dataptr, bytesPerLine*qt_img.height());
-        for (int i=0; i<qt_img.height(); i++){
-            inter.append((const char*)qt_img.scanLine(i), qt_img.bytesPerLine());
-        }
-    }
-    else {
-        heif_img.add_plane(heif_channel_R, qt_img.width(), qt_img.height(), qt_img.depth());
-        char* dataptr=(char*)heif_img.get_plane(heif_channel_R, &bytesPerLine);
-        if (dataptr==NULL||bytesPerLine<1){
-            printf("wrong dataptr");
-            return -1;
-        }
-        red.setRawData(dataptr, bytesPerLine*qt_img.height());
-        heif_img.add_plane(heif_channel_G, qt_img.width(), qt_img.height(), qt_img.depth());
-        dataptr=(char*)heif_img.get_plane(heif_channel_G, &bytesPerLine);
-        if (dataptr==NULL||bytesPerLine<1){
-            printf("wrong dataptr");
-            return -1;
-        }
-        green.setRawData(dataptr, bytesPerLine*qt_img.height());
-        heif_img.add_plane(heif_channel_B, qt_img.width(), qt_img.height(), qt_img.depth());
-        dataptr=(char*)heif_img.get_plane(heif_channel_B, &bytesPerLine);
-        if (dataptr==NULL||bytesPerLine<1){
-            printf("wrong dataptr");
-            return -1;
-        }
-        blue.setRawData(dataptr, bytesPerLine*qt_img.height());
-        if (hasHeifAlpha(heif_chr)){
-            heif_img.add_plane(heif_channel_Alpha, qt_img.width(), qt_img.height(), qt_img.depth());
-            dataptr=(char*)heif_img.get_plane(heif_channel_Alpha, &bytesPerLine);
-            if (dataptr==NULL||bytesPerLine<1){
-                printf("wrong dataptr");
-                return -1;
-            }
-            alpha.setRawData(dataptr, bytesPerLine*qt_img.height());
-        }
-    }
-
-
-
-
+    QString sample="sample.jpg";
+    get_heifData("sample.jpg");
+    get_decodedData("sample.heic");
     return 0;
 }
