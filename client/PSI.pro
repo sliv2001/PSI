@@ -13,6 +13,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     tclient.cpp \
+    tcodec.cpp \
     tcontext.cpp \
     tmediafile.cpp \
     ttabledelegate.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 HEADERS += \
     mainwindow.h \
     tclient.h \
+    tcodec.h \
     tcontext.h \
     tmediafile.h \
     ttabledelegate.h \

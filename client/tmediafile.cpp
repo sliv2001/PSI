@@ -1,6 +1,4 @@
 #include <QCryptographicHash>
-#include "libheif/heif.h"
-#include "libheif/heif_cxx.h"
 #include "tmediafile.h"
 
 int g_count_ofpixmaps=0;
