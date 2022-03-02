@@ -78,7 +78,7 @@ bool TCodec::hasHeifAlpha(heif_chroma chr)
     }
 }
 
-int TCodec::setImage(QImage qt_img)
+int TCodec::setImage_RGB888_RGBA8888(QImage qt_img)
 {
     int stride;
 
@@ -90,7 +90,10 @@ int TCodec::setImage(QImage qt_img)
         return -1;
     }
     try{
-        img.create(qt_img.width(), qt_img.height(), heif_colorspace_RGB, heif_chroma_interleaved_RGB);
+        if (hasHeifAlpha(chroma))
+            img.create(qt_img.width(), qt_img.height(), heif_colorspace_RGB, heif_chroma_interleaved_RGBA);
+        else
+            img.create(qt_img.width(), qt_img.height(), heif_colorspace_RGB, heif_chroma_interleaved_RGB);
     }
     catch (heif::Error e){
         return -1;
@@ -118,13 +121,25 @@ int TCodec::setImage(QImage qt_img)
     return 0;
 }
 
-int TCodec::transcode()
+int TCodec::setImage_convert(QImage img)
+{
+    if ((supportedColorspaces)img.format()==RGB888||(supportedColorspaces)img.format()==RGBA8888)
+        return setImage_RGB888_RGBA8888(img);
+    if ((supportedColorspaces)img.format()==RGB32){
+        img.convertTo(QImage::Format_RGB888);
+        return setImage_RGB888_RGBA8888(img);
+    }
+    return -1;
+}
+
+int TCodec::transcode_asHeic()
 {
     heif::ImageHandle handle;
     try{
         handle=ctx->encode_image(img, *enc);
     }
     catch (heif::Error e){
+        way_of_coding=coded_as_undefined;
         return -1;
     }
 
@@ -134,56 +149,25 @@ int TCodec::transcode()
     ctx->write(w);
     /*@FIXME possible error with freeing of memory used by res*/
     transcodeResult=res;
+    way_of_coding=coded_as_HEIC;
     return 0;
 }
 
-int TCodec::copyMetadata(QString src_path)
+QByteArray TCodec::getTranscodeResult()
 {
-    Exiv2::Image::UniquePtr exiv_src, exiv_dest;
-    try{
-        exiv_src=Exiv2::ImageFactory::open(src_path.toStdString());
-        assert(exiv_src.get()!=0);
-        exiv_src->readMetadata();
-        Exiv2::ExifData e_data=exiv_src->exifData();
-        Exiv2::XmpData x_data=exiv_src->xmpData();
-        Exiv2::IptcData i_data=exiv_src->iptcData();
-
-        exiv_dest=Exiv2::ImageFactory::open(transcodeResult.data(), transcodeResult.length());
-        assert(exiv_dest.get()!=0);
-        exiv_dest->setExifData(e_data);
-        exiv_dest->setXmpData(x_data);
-        exiv_dest->setIptcData(i_data);
-        exiv_dest->writeMetadata();
-    }
-    catch(Exiv2::Error e){
-        return -1;
-    }
-    return 0;
-    /*@TODO manage errors*/
-}
-
-int TCodec::setTags(QString tags)
-{
-    Exiv2::Image::UniquePtr exiv_img;
-    try {
-        exiv_img=Exiv2::ImageFactory::open(transcodeResult.data(), transcodeResult.length());
-        assert(exiv_img.get()!=0);
-        exiv_img->readMetadata();
-        Exiv2::ExifData e_data=exiv_img->exifData();
-        e_data["Exif.Image.XPKeywords"]=tags.toStdString();
-        exiv_img->setExifData(e_data);
-        exiv_img->writeMetadata();
-    }  catch (Exiv2::Error e) {
-        return -1;
-    }
-    return 0;
+    if (this->way_of_coding!=coded_as_undefined)
+        return this->transcodeResult;
+    else return "";
 }
 
 heif_error TCodec::writer::write(const void *data, size_t size)
 {
-    if (r!=nullptr)
-        r->setRawData((const char*)data, size);
     heif_error e;
-    e.code=heif_error_Ok;
+    if (r!=nullptr){
+        r->clear();
+        r->append((const char*)data, size);
+        e.code=heif_error_Ok;
+    }
+    else e.code=heif_error_Memory_allocation_error;
     return e;
 }

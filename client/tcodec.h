@@ -10,6 +10,19 @@ class TCodec : public QObject
 {
     Q_OBJECT
 public:
+    enum coded_as {
+        coded_as_undefined,
+        coded_as_RAW,
+        coded_as_JPEG,
+        coded_as_HEIC
+    };
+
+    enum supportedColorspaces {
+        RGB888 = QImage::Format_RGB888,
+        RGBA8888 = QImage::Format_RGBA8888,
+        RGB32 = QImage::Format_RGB32
+    };
+
     /**
      * @brief TCodec is a main class to encode images with
      * @param quality is parameter passed to encoder
@@ -20,33 +33,27 @@ public:
     ~TCodec();
 
     /**
-     * @brief setImage adds new raw image to context without conversion to working colorspace
+     * @brief setImage_RGB888_RGBA8888 adds new raw image to context without conversion to working colorspace
      * @param img is object of QImage, which must be of RGBA8888 or RGB888 format,
-     * otherwise use setImage_convert() for your own risk
+     * otherwise use setImage_convert() at your own risk
      * @return -1 if error encountered
      */
-    int setImage(QImage img);
+    int setImage_RGB888_RGBA8888(QImage img);
+
+    /**
+     * @brief setImage_convert adds new raw image to context, conversing colorspace
+     * according to function converseColorspace()
+     * @param img is object of QImage of any colorspace from enum supportedColorspaces
+     * @return -1 if error encountered
+     */
+    int setImage_convert(QImage img);
 
     /**
      * @brief transcode attempts to encode prepared data into .heic
      * and in case of success saves its representation in memory into context
      * @return -1 if error
      */
-    int transcode();
-
-    /**
-     * @brief copyMetadata copies Exif, Xmp and Iptc data into instance of file in memory.
-     * @param file is source file to get copy from
-     * @return -1 if error
-     */
-    int copyMetadata(QString file);
-
-    /**
-     * @brief setTags erases old tags from image and sets new ones
-     * @param tags are tags in format "tag1;tag2;"
-     * @return -1 if error
-     */
-    int setTags(QString tags);
+    int transcode_asHeic();
 
     /**
      * @brief getTranscodeResult
@@ -86,6 +93,8 @@ private:
         writer(QByteArray* result)  { r = result;}
         heif_error write(const void* data, size_t size) override;
     };
+
+    coded_as way_of_coding=coded_as_undefined;
 
 };
 

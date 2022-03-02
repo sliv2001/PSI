@@ -183,11 +183,8 @@ void TMediaFile::updatePropertiesWithResponse(QVector<QByteArray> array)
 
 QByteArray TMediaFile::encodeImage()
 {
-    TCodec codec(50, this);
-    codec.setImage(QImage(this->fullPath));
-    codec.transcode();
-    codec.copyMetadata(this->tags);
-    if (this->tagsHaveBeenSet)
-        codec.setTags(this->tags);
+    TCodec codec(50, nullptr);
+    codec.setImage_convert(QImage(this->fullPath));
+    codec.transcode_asHeic();
     return codec.getTranscodeResult();
 }

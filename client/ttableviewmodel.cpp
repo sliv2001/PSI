@@ -101,7 +101,7 @@ void TTableViewModel::populate(QList<TMediaFile> *newValues)
     endInsertRows();
 }
 
-void TTableViewModel::append(TMediaFile file)
+void TTableViewModel::append(TMediaFile &file)
 {
     int newRow = this->values->count()+1;
     beginInsertRows(QModelIndex(), newRow, newRow);
@@ -109,7 +109,7 @@ void TTableViewModel::append(TMediaFile file)
     endInsertRows();
 }
 
-void TTableViewModel::update(int idx, TMediaFile file)
+void TTableViewModel::update(int idx, TMediaFile &file)
 {
     (*this->values)[idx] = file;
 

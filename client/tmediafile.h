@@ -11,9 +11,8 @@
 /**
  * @brief The TMediaFile class is primitive class which contains methods to analyse and edit files.
  */
-class TMediaFile : public QObject
+class TMediaFile
 {
-    Q_OBJECT
 public:
     /**
      * @brief TMediaFile constructor creates new empty instance of data saving primitive.
@@ -102,15 +101,6 @@ public:
      * @brief rawDetectionScores are probabilities for an object to be properly named
      */
     QByteArray rawDetectionScores;
-
-    enum coded_as {
-        coded_as_undefined,
-        coded_as_RAW,
-        coded_as_JPEG,
-        coded_as_HEIC
-    };
-
-    TMediaFile::coded_as way_of_coding=coded_as_undefined;
 
     /**
      * @brief tagsHaveBeenSet tells whether recognition was done successfully
