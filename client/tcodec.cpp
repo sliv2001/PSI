@@ -1,4 +1,3 @@
-#include "libheif/heif.h"
 #include "tcodec.h"
 
 TCodec::TCodec(uint8_t quality, QObject *parent)
@@ -135,6 +134,48 @@ int TCodec::transcode()
     ctx->write(w);
     /*@FIXME possible error with freeing of memory used by res*/
     transcodeResult=res;
+    return 0;
+}
+
+int TCodec::copyMetadata(QString src_path)
+{
+    Exiv2::Image::UniquePtr exiv_src, exiv_dest;
+    try{
+        exiv_src=Exiv2::ImageFactory::open(src_path.toStdString());
+        assert(exiv_src.get()!=0);
+        exiv_src->readMetadata();
+        Exiv2::ExifData e_data=exiv_src->exifData();
+        Exiv2::XmpData x_data=exiv_src->xmpData();
+        Exiv2::IptcData i_data=exiv_src->iptcData();
+
+        exiv_dest=Exiv2::ImageFactory::open(transcodeResult.data(), transcodeResult.length());
+        assert(exiv_dest.get()!=0);
+        exiv_dest->setExifData(e_data);
+        exiv_dest->setXmpData(x_data);
+        exiv_dest->setIptcData(i_data);
+        exiv_dest->writeMetadata();
+    }
+    catch(Exiv2::Error e){
+        return -1;
+    }
+    return 0;
+    /*@TODO manage errors*/
+}
+
+int TCodec::setTags(QString tags)
+{
+    Exiv2::Image::UniquePtr exiv_img;
+    try {
+        exiv_img=Exiv2::ImageFactory::open(transcodeResult.data(), transcodeResult.length());
+        assert(exiv_img.get()!=0);
+        exiv_img->readMetadata();
+        Exiv2::ExifData e_data=exiv_img->exifData();
+        e_data["Exif.Image.XPKeywords"]=tags.toStdString();
+        exiv_img->setExifData(e_data);
+        exiv_img->writeMetadata();
+    }  catch (Exiv2::Error e) {
+        return -1;
+    }
     return 0;
 }
 

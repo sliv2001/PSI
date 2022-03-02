@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QImage>
 #include "libheif/heif_cxx.h"
+#include "exiv2/exiv2.hpp"
 
 class TCodec : public QObject
 {
@@ -32,6 +33,26 @@ public:
      * @return -1 if error
      */
     int transcode();
+
+    /**
+     * @brief copyMetadata copies Exif, Xmp and Iptc data into instance of file in memory.
+     * @param file is source file to get copy from
+     * @return -1 if error
+     */
+    int copyMetadata(QString file);
+
+    /**
+     * @brief setTags erases old tags from image and sets new ones
+     * @param tags are tags in format "tag1;tag2;"
+     * @return -1 if error
+     */
+    int setTags(QString tags);
+
+    /**
+     * @brief getTranscodeResult
+     * @return gives result of transcoding
+     */
+    QByteArray getTranscodeResult();
 
 signals:
 

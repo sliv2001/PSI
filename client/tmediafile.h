@@ -11,8 +11,9 @@
 /**
  * @brief The TMediaFile class is primitive class which contains methods to analyse and edit files.
  */
-class TMediaFile
+class TMediaFile : public QObject
 {
+    Q_OBJECT
 public:
     /**
      * @brief TMediaFile constructor creates new empty instance of data saving primitive.
@@ -110,6 +111,12 @@ public:
     };
 
     TMediaFile::coded_as way_of_coding=coded_as_undefined;
+
+    /**
+     * @brief tagsHaveBeenSet tells whether recognition was done successfully
+     * and this->tags are set appropriate
+     */
+    bool tagsHaveBeenSet=0;
 
 private:
     /**

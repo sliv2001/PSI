@@ -152,7 +152,7 @@ void TContext::exportWorker(QPromise<void> &promise, QDir path)
         path.cd(model->name);
         for (int i=0; i<model->rowCount(QModelIndex()); i++){
             model->value(i).move(path.absolutePath()+"/"+QFileInfo(model->value(i).fullPath).fileName());
-
+            model->value(i).encodeImage();
             progressValue++;
             promise.setProgressValue(progressValue);
         }
