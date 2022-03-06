@@ -13,6 +13,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     tclient.cpp \
+    tcodec.cpp \
     tcontext.cpp \
     tmediafile.cpp \
     ttabledelegate.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 HEADERS += \
     mainwindow.h \
     tclient.h \
+    tcodec.h \
     tcontext.h \
     tmediafile.h \
     ttabledelegate.h \
@@ -44,13 +46,16 @@ DISTFILES += \
 
 DEFINES += NET_RECOGNITION
 
-unix|win32: LIBS += -L$$PWD/../submodules/exiv2/build/lib/ -llibexiv2.dll
-unix|win32: LIBS += -L$$PWD/../submodules/exiv2/build/lib/ -lexiv2-xmp
-unix|win32: LIBS += -L$$PWD/../submodules/exiv2/build/lib/ -lwmain
+unix|win32: LIBS += -L$$PWD/../submodules/exiv2/build/lib/ -llibexiv2.dll \
+    -L$$PWD/../submodules/exiv2/build/lib/ -lexiv2-xmp \
+    -L$$PWD/../submodules/exiv2/build/lib/ -lwmain \
+    -L$$PWD/../submodules/libheif/libheif/.libs/ -llibheif.dll
 
 INCLUDEPATH += $$PWD/../submodules/exiv2/include \
     $$PWD/../submodules/exiv2/build \
-    $$PWD/test
+    $$PWD/test \
+    $$PWD/../submodules/libheif
 
 DEPENDPATH += $$PWD/../submodules/exiv2/include \
-    $$PWD/../submodules/exiv2/build
+    $$PWD/../submodules/exiv2/build \
+    $$PWD/../submodules/libheif

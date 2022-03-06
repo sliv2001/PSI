@@ -186,12 +186,12 @@ void MainWindow::on_action_3_triggered()
 
     QDir dir(strdir);
     if (strdir!=""){
-    startExport();
-    context->exportWatcher = new QFutureWatcher<void>();
-    connect(context->exportWatcher, &QFutureWatcher<void>::finished, this, &MainWindow::finishExport);
-    connect(context->exportWatcher, &QFutureWatcher<void>::progressValueChanged, this, &MainWindow::progressAtWork);
-    connect(context->exportWatcher, &QFutureWatcher<void>::progressRangeChanged, this, &MainWindow::setupBar);
-    QFuture<void> future = context->Export(dir);
+        startExport();
+        context->exportWatcher = new QFutureWatcher<void>();
+        connect(context->exportWatcher, &QFutureWatcher<void>::finished, this, &MainWindow::finishExport);
+        connect(context->exportWatcher, &QFutureWatcher<void>::progressValueChanged, this, &MainWindow::progressAtWork);
+        connect(context->exportWatcher, &QFutureWatcher<void>::progressRangeChanged, this, &MainWindow::setupBar);
+        QFuture<void> future = context->Export(dir);
     }
 }
 

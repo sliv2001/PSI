@@ -38,7 +38,13 @@ public:
      */
     static QString concatTags(QVector<QByteArray> array);
 
+    /**
+     * @brief updatePropertiesWithResponse fills raw data with response from array
+     * @param array
+     */
     void updatePropertiesWithResponse(QVector<QByteArray> array);
+
+    QByteArray encodeImage();
 
     /**
      * @brief picture is data of a photo itself
@@ -95,6 +101,12 @@ public:
      * @brief rawDetectionScores are probabilities for an object to be properly named
      */
     QByteArray rawDetectionScores;
+
+    /**
+     * @brief tagsHaveBeenSet tells whether recognition was done successfully
+     * and this->tags are set appropriate
+     */
+    bool tagsHaveBeenSet=0;
 
 private:
     /**

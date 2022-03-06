@@ -1,11 +1,15 @@
-Для компиляции exiv2 совместно с Qt выполнить следующее:
+Для компиляции зависимостей совместно с Qt на MinGW (без msys) 
+выполнить следующее:
 1. Установить msys
-2. Выполнить:
+2. Выполнить в среде msys-MinGW:
 
-pacman -S mingw-w64-x86_64-binutils mingw-w64-x86_64-cmake mingw-w64-x86_64-curl mingw-w64-x86_64-expat mingw-w64-x86_64-gcc mingw-w64-x86_64-gettext mingw-w64-x86_64-gtest mingw-w64-x86_64-libiconv mingw-w64-x86_64-make mingw-w64-x86_64-zlib
-mkdir -p ~/gnu/github/exiv2 && cd       ~/gnu/github/exiv2 && git clone https://github.com/exiv2/exiv2 && cd exiv2 && mkdir build && cd build && cmake -G "MSYS Makefiles" -DCMAKE_CXX_FLAGS=-Wno-deprecated -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DEXIV2_BUILD_SAMPLES=ON -DEXIV2_ENABLE_NLS=ON -DEXIV2_ENABLE_WEBREADY=ON -DEXIV2_ENABLE_BMFF=ON -DEXIV2_BUILD_UNIT_TESTS=ON .. && cmake --build . --parallel
+sh init.sh
 
 3. Полученные файлы .a, .dll, .h разместить по соответствующим папкам.
-4. Файлы libexpat.dll, libiconv.dll, libintl-8.dll, zlib1.dll разместить в System32 или в папке с .exe файлом
+4. Файлы libexpat.dll, libiconv.dll, libintl-8.dll, zlib1.dll, 
+libx265.dll, libde265.dll, libjpeg.dll разместить в System32 
+или в папке с .exe файлом
 5. ...
 6. Profit!
+
+Для компиляции с Qt, собранным в msys, достаточно шагов 2-3, 5-6.

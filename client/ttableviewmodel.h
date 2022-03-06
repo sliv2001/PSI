@@ -52,14 +52,14 @@ public:
      * @brief append adds new file to values.
      * @param file is new file to be added.
      */
-    void append(TMediaFile file);
+    void append(TMediaFile &file);
 
     /**
      * @brief update changes particular row.
      * @param idx is index of row changed.
      * @param file is new value of row.
      */
-    void update(int idx, TMediaFile file);
+    void update(int idx, TMediaFile &file);
 
     /**
      * @brief deleteRow does what it was made for.
