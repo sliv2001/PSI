@@ -51,6 +51,8 @@ public:
 
     void updateModelWithResult(QVector<QByteArray> result);
 
+    void prepareFileToWriting();
+    
 private:
     QList<TTableViewModel*> *tabs;
     TClient* client;
@@ -61,6 +63,7 @@ private:
 
     int totalImageCount;
 
+    QString prepareFileToWriting(QString path, int i);
 };
 
 #endif // TCONTEXT_H

@@ -139,6 +139,28 @@ void TContext::recognizeWorker(QPromise<void> &promise)
     }
 }
 
+QString TContext::prepareFileToWriting(QString path, int i)
+{
+    if (i==0){
+        if (!QFileInfo::exists(path))
+            return path;
+        else {
+            i++;
+            return prepareFileToWriting(path, i);
+        }
+    }
+    else {
+        QString newPath = QFileInfo(path).absolutePath()+QFileInfo(path).baseName()+" ("+
+                QString::number(i)+")"+QFileInfo(path).suffix();
+        if (!QFileInfo::exists(newPath))
+            return newPath;
+        else {
+            i++;
+            return prepareFileToWriting(path, i);
+        }
+    }
+}
+
 void TContext::exportWorker(QPromise<void> &promise, QDir path)
 {
     promise.setProgressRange(0, totalImageCount);
@@ -153,7 +175,11 @@ void TContext::exportWorker(QPromise<void> &promise, QDir path)
         for (int i=0; i<model->rowCount(QModelIndex()); i++){
             //model->value(i).move(path.absolutePath()+"/"+QFileInfo(model->value(i).fullPath).fileName());
 
-            model->value(i).encodeImage();
+            QFile f(prepareFileToWriting(path.absolutePath()+"/"
+                                         +QFileInfo(model->value(i).fullPath).baseName()+".heic", 0), this);
+            f.open(QIODeviceBase::WriteOnly);
+            f.write(model->value(i).encodeImage());
+            f.close();
             progressValue++;
             promise.setProgressValue(progressValue);
         }
