@@ -4,6 +4,7 @@ mingw-w64-x86_64-gcc mingw-w64-x86_64-gettext mingw-w64-x86_64-gtest \
 mingw-w64-x86_64-libiconv mingw-w64-x86_64-make mingw-w64-x86_64-zlib \
 autoconf autogen automake autotools mingw-w64-x86_64-x265 \
 mingw-w64-x86_64-libde265 mingw-w64-x86_64-libjpeg-turbo \
+nasm mingw-w64-x86_64-nasm 
 --noconfirm --needed
 
 
@@ -32,4 +33,11 @@ cd ./libheif
 ./autogen.sh
 ./configure --enable-shared --enable-dependency-tracking --disable-examples
 make -j
+cd ..
+
+#Compiling ffmpeg
+
+cd ./FFmpeg
+./configure --enable-shared
+make -j 4
 cd ..
