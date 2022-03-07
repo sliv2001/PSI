@@ -4,6 +4,7 @@
 #include <QString>
 #include "libheif/heif.h"
 #include "libheif/heif_cxx.h"
+#include <exiv2/exiv2.hpp>
 
 enum heif_colorspace getHeifColorSpace(QImage::Format format){
     switch (format){
@@ -165,8 +166,26 @@ uchar* get_decodedData(QString s){
 
 int main(int argc, char *argv[])
 {
-    QString sample="sample.jpg";
-    get_heifData("sample.jpg");
-    //get_decodedData("sample.heic");
+    QString sample="output.heic";
+    Exiv2::enableBMFF(true);
+    QString tags="tag;";
+    Exiv2::Image::UniquePtr src = Exiv2::ImageFactory::open(sample.toStdString());
+    if (src.get()==0)
+        return -1;
+    try {
+        src->readMetadata();
+        Exiv2::ExifData exf = src->exifData();
+        Exiv2::byte arr[65536];
+        memcpy(arr, tags.toStdU16String().c_str(), tags.length()*2+2);
+        std::cout<<exf["Exif.Image.XPKeywords"];
+        Exiv2::Value::UniquePtr v = Exiv2::Value::create(Exiv2::TypeId::unsignedByte);
+        v->read(arr, 8, Exiv2::ByteOrder::littleEndian);
+        exf["Exif.Image.XPKeywords"].setValue(v.get());
+        src->setExifData(exf);
+        src->writeMetadata();
+
+    }  catch (...) {
+        return -1;
+    }
     return 0;
 }

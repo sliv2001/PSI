@@ -56,10 +56,33 @@ public:
     int transcode_asHeic();
 
     /**
+     * @brief updateHeicWithMetadata writes raw metadata from .jpg file (Exif only)
+     * to .heic raw data in memory
+     * @param path is path to .jpg file
+     * @return -1 if error
+     */
+    int updateHeicWithMetadata(QString path);
+
+    /**
+     * @brief updateHeicWithMetadata writes raw metadata from .jpg file (Exif only)
+     * and also sets Exif tags
+     * @param path is path to .jpg file
+     * @param tags is string with objects received from AI
+     * @return -1 if error
+     */
+    int updateHeicWithMetadata(QString path, QString tags);
+
+    /**
      * @brief getTranscodeResult
      * @return gives result of transcoding
      */
     QByteArray getTranscodeResult();
+
+    /**
+     * @brief save_toByteArray writes raw .heic file into byte array,
+     * whose pointer was written into object
+     */
+    void save_toByteArray();
 
 signals:
 
@@ -68,6 +91,7 @@ private:
     heif::Encoder *enc;
     heif::Image img;
     heif_chroma chroma;
+    heif::ImageHandle handle;
     int bitDepth;
     QByteArray transcodeResult="";
 

@@ -132,17 +132,8 @@ int TCodec::setImage_convert(QImage img)
     return -1;
 }
 
-int TCodec::transcode_asHeic()
+void TCodec::save_toByteArray()
 {
-    heif::ImageHandle handle;
-    try{
-        handle=ctx->encode_image(img, *enc);
-    }
-    catch (heif::Error e){
-        way_of_coding=coded_as_undefined;
-        return -1;
-    }
-
     QByteArray res="";
 
     writer w(&res);
@@ -150,6 +141,58 @@ int TCodec::transcode_asHeic()
     /*@FIXME possible error with freeing of memory used by res*/
     transcodeResult=res;
     way_of_coding=coded_as_HEIC;
+    //ctx->write_to_file("output.heic");
+}
+
+int TCodec::transcode_asHeic()
+{
+    try{
+        this->handle=ctx->encode_image(img, *enc);
+    }
+    catch (heif::Error e){
+        way_of_coding=coded_as_undefined;
+        return -1;
+    }
+    return 0;
+}
+
+int TCodec::updateHeicWithMetadata(QString path)
+{
+    Exiv2::Image::UniquePtr src = Exiv2::ImageFactory::open(path.toStdString());
+    if (src.get()==0)
+        return -1;
+    try {
+        src->readMetadata();
+
+        Exiv2::Blob data;
+        Exiv2::ExifParser::encode(data, Exiv2::ByteOrder::littleEndian, src->exifData());
+        uint8_t* p_data = (uint8_t*)data.data();
+        ctx->add_exif_metadata(this->handle, p_data, data.size());
+    }  catch (...) {
+        return -1;
+    }
+    return 0;
+}
+
+int TCodec::updateHeicWithMetadata(QString path, QString tags)
+{
+    Exiv2::Image::UniquePtr src = Exiv2::ImageFactory::open(path.toStdString());
+    if (src.get()==0)
+        return -1;
+    try {
+        src->readMetadata();
+        Exiv2::ExifData exf = src->exifData();
+        Exiv2::Value::UniquePtr v = Exiv2::Value::create(Exiv2::TypeId::unsignedByte);
+        v->read((uint8_t*)tags.toStdU16String().c_str(), tags.length()*2, Exiv2::ByteOrder::littleEndian);
+        exf["Exif.Image.XPKeywords"].setValue(v.get());
+        src->setExifData(exf);
+        Exiv2::Blob data;
+        Exiv2::ExifParser::encode(data, Exiv2::ByteOrder::littleEndian, exf);
+        uint8_t* p_data = (uint8_t*)data.data();
+        ctx->add_exif_metadata(this->handle, p_data, data.size());
+    }  catch (...) {
+        return -1;
+    }
     return 0;
 }
 

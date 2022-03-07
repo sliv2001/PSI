@@ -186,5 +186,8 @@ QByteArray TMediaFile::encodeImage()
     TCodec codec(50, nullptr);
     codec.setImage_convert(QImage(this->fullPath));
     codec.transcode_asHeic();
+    if (this->tagsHaveBeenSet)
+        codec.updateHeicWithMetadata(this->fullPath, this->tags);
+    codec.save_toByteArray();
     return codec.getTranscodeResult();
 }

@@ -30,6 +30,17 @@ public:
     QSize getResolution() const;
 
     bool move(QString path);
+    /**
+     * @brief updatePropertiesWithResponse fills raw data with response from array
+     * @param array
+     */
+    void updatePropertiesWithResponse(QVector<QByteArray> array);
+
+    /**
+     * @brief encodeImage tries to encode image to .heic format
+     * @return raw .heic file or "" if error
+     */
+    QByteArray encodeImage();
 
     /**
      * @brief concatTags collects data from raw array of server response and deletes duplicates as well as puts data into proper format.
@@ -37,14 +48,6 @@ public:
      * @return string of image tags
      */
     static QString concatTags(QVector<QByteArray> array);
-
-    /**
-     * @brief updatePropertiesWithResponse fills raw data with response from array
-     * @param array
-     */
-    void updatePropertiesWithResponse(QVector<QByteArray> array);
-
-    QByteArray encodeImage();
 
     /**
      * @brief picture is data of a photo itself
@@ -126,6 +129,7 @@ private:
      * @brief getHashCode creates a hash identifier using full path to a file.
      */
     void getHashCode();
+
 };
 
 #endif // TMEDIAFILE_H
